@@ -10,4 +10,126 @@
   margin-right: 20px;
   padding: 10px;
 }
+
+#tab-bar {
+  border-bottom: 1px solid #cccccc;
+  height: 1.33333rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#tab-bar .student {
+  width: 50%;
+  height: 100%;
+}
+
+#tab-bar .student .student-text {
+  width: 60%;
+  margin: 0 auto;
+  height: 100%;
+  font-size: 0.4rem;
+  line-height: 1.33333rem;
+}
+
+#tab-bar .teacher {
+  width: 50%;
+  height: 100%;
+}
+
+#tab-bar .teacher .teacher-text {
+  width: 60%;
+  margin: 0 auto;
+  height: 100%;
+  font-size: 0.4rem;
+  line-height: 1.33333rem;
+}
+
+#select-bar {
+  border-bottom: 1px solid #cccccc;
+  height: 1.33333rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.date-box {
+  width: 60%;
+  height: 100%;
+  font-size: 0.4rem;
+  margin-left: 0.53333rem;
+}
+
+.date-box .date {
+  padding-left: 0.66667rem;
+  height: 80%;
+  border: 1px solid #cccccc;
+  margin-top: 0.13333rem;
+  background: #fff;
+  border-radius: 0.13333rem;
+}
+
+.select-box {
+  width: 40%;
+  height: 100%;
+  font-size: 0.26667rem;
+}
+
+.select-box .select {
+  padding-left: 0.66667rem;
+  width: 70%;
+  margin-top: 0.13333rem;
+  margin-left: 0.4rem;
+  height: 80%;
+  border: 1px solid #cccccc;
+  border-radius: 0.13333rem;
+}
+
+#charts-box .contain-chart {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#charts-box .contain-chart #chart1 {
+  width: 50%;
+  height: 4.66667rem;
+}
+
+#charts-box .contain-chart #chart2 {
+  width: 50%;
+  height: 4.66667rem;
+}
+
+#charts-box .charts-title-box {
+  height: 1.33333rem;
+}
+
+#charts-box .charts-title-box .charts-title {
+  float: left;
+  font-size: 0.53333rem;
+  line-height: 1.33333rem;
+  margin-left: 0.26667rem;
+}
+
+#charts-box .charts-title-box .charts-select {
+  float: right;
+  font-size: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+#charts-box .prompt-box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#charts-box .prompt-box .prompt {
+  width: 50%;
+  height: 2.66667rem;
+  border: 1px solid #cccccc;
+  margin: 0.13333rem;
+  border-radius: 0.2rem;
+  padding: 0.26667rem;
+}
 /*# sourceMappingURL=index.css.map */

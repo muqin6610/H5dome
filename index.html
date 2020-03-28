@@ -22,7 +22,43 @@
     </div>
   </header>
   <main>
-    <div id="main" style="width: 100%;height:400px;"></div>
+    <div id='tab-bar'>
+      <div class='student'>
+        <div class='student-text'>学生健康统计</div>
+      </div>
+      <div class='teacher'>
+        <div class='teacher-text'>老师健康统计</div>
+      </div>
+    </div>
+    <div id='select-bar'>
+      <div class='date-box'>
+        <span>时间</span>
+        <input class='date' type="date" value="2015-09-24"/>
+      </div>
+      <div class='select-box'>
+        <select class='select' name='select'>
+          <option value="morning" selected>上午</option>
+          <option value="afternoon">下午</option>
+        </select>
+      </div>
+    </div>
+    <div id='charts-box'>
+      <div class='charts-title-box'>
+        <span class='charts-title'>数据统计</span>
+        <select class='charts-select' name='charts-select'>
+          <option value="all" selected>全部</option>
+          <option value="firstGrade">一年级</option>
+        </select>
+      </div>
+      <div class='contain-chart'>
+        <div id="chart1"></div>
+        <div id="chart2"></div>
+      </div>
+      <div class='prompt-box'>
+        <div class='prompt'></div>
+        <div class='prompt'></div>
+      </div>
+    </div>
     <button id="goDetail">查看详情</button>
   </main>
 </body>
@@ -30,14 +66,25 @@
 <script>
 let button = document.getElementById('goDetail')
 let iconfont = document.getElementsByClassName('icon-zuojiantou')[0]
-console.log(button)
-console.log(iconfont)
+let student = document.getElementsByClassName('student')[0]
+let teacher = document.getElementsByClassName('teacher')[0]
+console.log(student)
+console.log(teacher)
+student.classList.add('blurColor')
 
 button.onclick = () => {
   window.location.href="./detail.html?uid='safka92434h2uub'&uername='站三'"
 }
 iconfont.onclick = () => {
   console.log('返回到了app')
+} 
+student.onclick = () => {
+  student.classList.add('blurColor')
+  teacher.classList.remove('blurColor')
+} 
+teacher.onclick = () => {
+  teacher.classList.add('blurColor')
+  student.classList.remove('blurColor')
 } 
 </script>
 </html>

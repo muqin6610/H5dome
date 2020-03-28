@@ -52,29 +52,17 @@
   const size = fGetChartFontSize()
 
   // 基于准备好的dom，初始化echarts实例
-  let myChart = echarts.init(document.getElementById('main'), null, {renderer: 'svg'})
+  let myChart1 = echarts.init(document.getElementById('chart1'), null, {renderer: 'svg'})
+  let myChart2 = echarts.init(document.getElementById('chart2'), null, {renderer: 'svg'})
  
  // 指定图表的配置项和数据
- let option = {
+ let option1 = {
      tooltip: {
         trigger: 'item',
         formatter: '{a} <br/>{b}: {c} ({d}%)',
         textStyle:{
             fontSize: size //此处设置提示文字大小
         }
-    },
-    // 提示文本
-    legend: {
-      // 提示文本排列方式
-      orient: "vertical", // 垂直排列
-      x: "left", // x轴显示位置
-      y: 'top', // y轴显示位置
-      // 提示文本样式
-      textStyle: {
-        fontSize: size, // 字体大小
-        color: "#1e1e1e" // 字体颜色
-      },
-      icon: 'pin',
     },
     series: [
         {
@@ -83,8 +71,16 @@
             radius: ['50%', '70%'],
             avoidLabelOverlap: false,
             label: {
-                show: false,
-                position: 'center'
+                show: true,
+                position: 'center',
+                fontSize: size,
+                formatter : (param) => {
+                  if(param.name === "搜索引擎"){
+                    return param.percent + '%'
+                  }else {
+                    return ''
+                  }
+                }
             },
             emphasis: {
                 label: {
@@ -106,11 +102,60 @@
         }
     ]
  }
- myChart.resize()
+ let option2 = {
+     tooltip: {
+        trigger: 'item',
+        formatter: '{a} <br/>{b}: {c} ({d}%)',
+        textStyle:{
+            fontSize: size //此处设置提示文字大小
+        }
+    },
+    series: [
+        {
+            name: '访问来源',
+            type: 'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: false,
+            label: {
+                show: true,
+                position: 'center',
+                fontSize: size,
+                formatter : (param) => {
+                  if(param.name === "搜索引擎"){
+                    return param.percent + '%'
+                  }else {
+                    return ''
+                  }
+                }
+            },
+            emphasis: {
+                label: {
+                    show: true,
+                    fontSize: size,
+                    fontWeight: 'bold'
+                }
+            },
+            labelLine: {
+                show: false
+            },
+            data: [
+                {value: 335, name: '直接访问'},
+                {value: 310, name: '邮件营销'},
+                {value: 234, name: '联盟广告'},
+                {value: 135, name: '视频广告'},
+                {value: 1548, name: '搜索引擎'}
+            ]
+        }
+    ]
+ }
+ myChart1.resize()
+ myChart2.resize()
  window.addEventListener("resize", () => { 
-    myChart.resize()
+    myChart1.resize()
+    myChart2.resize()
  })
 
  // 使用刚指定的配置项和数据显示图表。
- myChart.setOption(option)
+ myChart1.setOption(option1)
+ myChart2.setOption(option2)
 })(window, document);
