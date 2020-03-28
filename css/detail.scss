@@ -1,0 +1,15 @@
+/*移动端适配计算 start*/
+$baseUIPx : 750px;
+@function pxToRem($px) {
+  @return $px / ($baseUIPx / 10) * 1rem;
+}
+#backIndex {
+  font-size: pxToRem(50px);
+  float: right;
+  background: rgb(63, 88, 199);
+  color: #fff;
+  border: 1px solid #262626;
+  border-radius: 5px;
+  margin-right: 20px;
+  padding: 10px;
+}

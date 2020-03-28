@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <title>H5测温</title>
+    <link href="./css/detail.css" rel="stylesheet" type="text/css"/>
+    <link href="./css/base.css" rel="stylesheet" type="text/css"/>
+    <link rel="icon" href='./images/logo_malai.png'>
+    <link rel="stylesheet" href="./css/iconfont.css">
+    <script src='./js/detail.js'></script>
+</head>
+<body>
+    <div>详情页面</div>
+    <button id="backIndex">返回上级</button>
+</body>
+<script>
+let button = document.getElementById('backIndex')
+console.log(button)
+button.onclick = () => {
+    window.history.go(-1)
+}
+// 获取url的参数
+let params = getUrlVars()
+let uid = decodeURI(params.uid)
+let uername = decodeURI(params.uername)
+console.log(uid)
+console.log(uername)
+</script>
+</html>

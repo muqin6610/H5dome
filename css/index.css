@@ -1,0 +1,13 @@
+@charset "UTF-8";
+/*移动端适配计算 start*/
+#goDetail {
+  font-size: 0.4rem;
+  float: right;
+  background: #3f58c7;
+  color: #fff;
+  border: 1px solid #262626;
+  border-radius: 10px;
+  margin-right: 20px;
+  padding: 10px;
+}
+/*# sourceMappingURL=index.css.map */
