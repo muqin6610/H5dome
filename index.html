@@ -14,11 +14,11 @@
  <div class="page">
   <div class="header-block">
      <header class="bar bar-nav">
-       <i class="icon icon-left pull-left"></i>
+       <i class="icon icon-left pull-left" onclick="returnBlank()"></i>
        <div class="title">师生健康报表</div>
      </header>
   </div>
-  <div class="content">
+  <div class="content index1">
     <div class="buttons-tab">
       <a href="#tab1" class="tab-link active button">学生健康统计</a>
       <a href="#tab2" class="tab-link button">老师健康统计</a>
@@ -114,11 +114,50 @@
        </div>
       </div>
     </div>
+    
+    <div class="content index2">
+      <div class="content-block">
+        <div class='picker-date-box'>
+          <div class="date-box">
+            <span style="font-size: 0.75rem;">时间</span>
+            <span class="icon icon-left"></span>
+            <input class="date-input" type="text" id="my-input2"/>
+            <span class="icon icon-right"></span>
+          </div>
+          <div class='picker-box'>
+            <input class='picker-input' type="text" id='picker-input2'/>
+            <span class="icon icon-down"></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">截至2020-03-31 08:25:36</div>
+        <div class="card-content">
+          <div class="card-content-inner">李易峰</div>
+        </div>
+        <div class="card-footer">体温正常: 36.3℃</div>
+      </div>
+      <div class="card">
+        <div class="card-header">截至2020-03-31 08:25:36</div>
+        <div class="card-content">
+          <div class="card-content-inner">李易达</div>
+        </div>
+        <div class="card-footer">体温异常: 38.3℃</div>
+      </div>
+    </div>
   </div>
 </body>
 <script src="./js/sm.js"></script>
 <script src='./js/index.js'></script>
 <script>
-
+let code = '0'
+if(code !== '0') {
+  $('.index1').hide()
+  $('.index2').show()
+}else {
+  $('.index2').hide()
+  $('.index1').show()
+}
 </script>
 </html>

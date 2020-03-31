@@ -3579,7 +3579,8 @@ html {
   }
   .card-header {
     border-radius: 0.1rem 0.1rem 0 0;
-    font-size: 0.85rem;
+    font-size: .7rem;
+    color: #656565;
   }
   .card-header:after {
     content: '';

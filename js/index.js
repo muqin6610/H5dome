@@ -157,6 +157,16 @@ $("#my-input").calendar({
       console.log(displayValues)
     },
 });
+// 添加到日历组件当中
+$("#my-input2")[0].value = today
+// 初始化日历组件
+$("#my-input2").calendar({
+    value: [today], // 设置默认值
+    dateFormat: 'yyyy-mm-dd', // 日期格式化
+    onChange: function(p, values, displayValues){
+      console.log(displayValues)
+    },
+});
 
 // 初始化选择组件1
 let val = "", displayVal = "";
@@ -183,6 +193,33 @@ $("#picker-input").picker({
         //这里获取关闭时选择的值
         val = picker.value[0];
         displayVal = picker.displayValue[0];
+    },
+});
+// 初始化选择组件1.2
+let val1 = "", displayVal1 = "";
+// 添加到选择组件当中
+$("#picker-input2")[0].value = '上午'
+// 初始化选择组件
+$("#picker-input2").picker({
+    toolbarTemplate: '<header class="bar bar-nav">\
+    <button class="button button-link pull-right close-picker" style="color: #FFF;margin-top: .4rem;">确定</button>\
+    <h1 class="title" style="color: #FFF">请选择</h1>\
+    </header>', // 设置头部标题
+    cols: [
+      {
+          textAlign: 'center', // 设置文本位置
+          value:["1"], // 设置默认值
+          values: ["1", "2"], // 隐藏值
+          displayValues: ["上午", "下午",] // 显示值
+      }
+    ],
+    formatValue: function (p, values, displayValues) {// 自定义方法，用来控制如何显示picker的选中值
+        return displayValues[0];
+    },
+    onClose: function (picker, values, displayValues) {// picker 关闭时的触发动作
+        //这里获取关闭时选择的值
+        val1 = picker.value[0];
+        displayVal1 = picker.displayValue[0];
     },
 });
 
