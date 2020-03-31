@@ -9,6 +9,10 @@ function getUrlVars() {
     }
     return vars
 } 
+/**返回上一页 */
+$('#backIndex').click(function(){
+    window.history.go(-1)
+})
 
 /**业务逻辑代码 */
 // 跳转到班级详情
