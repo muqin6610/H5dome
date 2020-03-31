@@ -9,3 +9,29 @@ function getUrlVars() {
     }
     return vars
 } 
+
+/**业务逻辑代码 */
+// 跳转到详情
+function classDetail(val) {
+  if(val === '0') {
+    window.location.href="./classDetail.html?uid='0'&uername='爱华学校'"
+  }else if(val === '1') {
+    window.location.href="./classDetail.html?uid='1'&uername='南山学校'"
+  }else if(val === '2'){
+    window.location.href="./classDetail.html?uid='2'&uername='宝安学校'"
+  }else {
+      window.location.href="./classDetail.html?uid='3'&uername='兴东学校'"
+  }
+}
+// 跳转到详情
+function peopelDetail(val) {
+  if(val === '0') {
+    window.location.href="./peopelDetail.html?uid='0'&uername='爱华学校'"
+  }else if(val === '1') {
+    window.location.href="./peopelDetail.html?uid='1'&uername='南山学校'"
+  }else if(val === '2'){
+    window.location.href="./peopelDetail.html?uid='2'&uername='宝安学校'"
+  }else {
+      window.location.href="./peopelDetail.html?uid='3'&uername='兴东学校'"
+  }
+}

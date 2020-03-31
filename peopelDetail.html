@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>H5测温</title>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <link rel="stylesheet" href="./css/sm.css">
+    <link rel="stylesheet" href="./fonts/iconfont.css">
+</head>
+<body>
+ <!-- page 容器 -->
+ <div class="page">
+    <div class="header-block">
+       <header class="bar bar-nav">
+         <i class="icon icon-left pull-left" id="backIndex"></i>
+         <div class="title">爱华学校一年级一班未上报详情</div>
+       </header>
+    </div>
+
+    <div class="list-block">
+      <ul>
+        <li class="item-content">
+          <div class="item-media"><i class="icon icon-f7"></i></div>
+          <div class="item-inner">
+            <div class="item-title">阿伟</div>
+          </div>
+        </li>
+        <li class="item-content">
+          <div class="item-media"><i class="icon icon-f7"></i></div>
+          <div class="item-inner">
+            <div class="item-title">阿伟</div>
+          </div>
+        </li>
+        <li class="item-content">
+          <div class="item-media"><i class="icon icon-f7"></i></div>
+          <div class="item-inner">
+            <div class="item-title">阿伟</div>
+          </div>
+        </li>
+        <li class="item-content">
+          <div class="item-media"><i class="icon icon-f7"></i></div>
+          <div class="item-inner">
+            <div class="item-title">阿伟</div>
+          </div>
+        </li>
+        <li class="item-content">
+          <div class="item-media"><i class="icon icon-f7"></i></div>
+          <div class="item-inner">
+            <div class="item-title">阿伟</div>
+          </div>
+        </li>
+        <li class="item-content">
+          <div class="item-media"><i class="icon icon-f7"></i></div>
+          <div class="item-inner">
+            <div class="item-title">阿伟</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+ </div>
+</body>
+<script src="./js/sm.js"></script>
+<script src='./js/detail.js'></script>
+<script>
+$('#backIndex').click(function(){
+    window.history.go(-1)
+})
+// 获取url的参数
+let params = getUrlVars()
+let uid = decodeURI(params.uid)
+let uername = decodeURI(params.uername)
+console.log(uid)
+console.log(uername)
+</script>
+</html>

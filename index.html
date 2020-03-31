@@ -1,90 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>H5测温</title>
-    <link href="./css/index.css" rel="stylesheet" type="text/css"/>
-    <link href="./css/base.css" rel="stylesheet" type="text/css"/>
-    <link rel="icon" href='./images/logo_malai.png'>
-    <link rel="stylesheet" href="./css/iconfont.css">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/echarts/4.7.0/echarts-en.common.js'></script>
+    <link rel="stylesheet" href="./css/sm.css">
 </head>
 <body>
-  <header>
-    <div class='top-bar'>
-      <div class='icon-box'>
-        <i class='iconfont icon-zuojiantou'></i>
-      </div>
-      <div class='title-box'>
-        <span class='top-title'>师生健康报表</span>
-      </div>
-    </div>
+  <!-- page 容器 -->
+ <div class="page">
+  <header class="bar bar-nav">
+    <i class="icon icon-left pull-left"></i>
+    <div class="title">师生健康报表</div>
   </header>
-  <main>
-    <div id='tab-bar'>
-      <div class='student'>
-        <div class='student-text'>学生健康统计</div>
-      </div>
-      <div class='teacher'>
-        <div class='teacher-text'>老师健康统计</div>
+  <div class="content">
+    <div class="buttons-tab">
+      <a href="#tab1" class="tab-link active button">学生健康统计</a>
+      <a href="#tab2" class="tab-link button">老师健康统计</a>
+    </div>
+    <div class="content-block">
+      <div class="tabs">
+        <div id="tab1" class="tab active">
+          <div class="content-block">
+            <div class='picker-date-box'>
+              <div class="date-box">
+                <span>时间</span>
+                <span class="icon icon-left"></span>
+                <input class="date-input" type="text" id="my-input"/>
+                <span class="icon icon-right"></span>
+              </div>
+              <div class='picker-box'>
+                <input class='picker-input' type="text" id='picker-input'/>
+                <span class="icon icon-down"></span>
+              </div>
+            </div>
+            
+            <div class='statistics'>
+              <div id='charts-box'>
+                <div class='charts-title-box'>
+                  <span class='charts-title'>数据统计</span>
+                  <div class='charts-select'>
+                    <input type="text" id='select-input'/>
+                    <span class="icon icon-down"></span>
+                  </div>
+                </div>
+                <div class='contain-chart'>
+                  <div id="chart1"></div>
+                  <div id="chart2"></div>
+                </div>
+                <div class='prompt-box'>
+                  <div class='report-box'>
+                    <div class='reported'>
+                      <div class='div-icon-blue'></div>
+                      <div class='content-text'>已上报: 100540</div>
+                    </div>
+                    <div class='not-reported'>
+                      <div class='div-icon-yellow'></div>
+                      <div class='content-text'>未上报: 20524</div>
+                    </div>
+                    <div></div>
+                  </div>
+                  <div class='temperature-box'>
+                    <div class='normal'>
+                      <div class='div-icon-green'></div>
+                      <div class='content-text'>正常: 75234</div>
+                    </div>
+                    <div class='abnormal'>
+                      <div class='div-icon-red'></div>
+                      <div class='content-text'>异常: 2325</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="list-block">
+              <ul>
+                <li class="item-content">
+                  <div class="item-media"><i class="icon icon-f7"></i></div>
+                  <div class="item-inner" onclick="schoolDetail('0')">
+                    <div class="item-title">未上报人数</div>
+                    <div class="item-after">25234<span class="icon icon-right icon-margin"></span></div>
+                  </div>
+                </li>
+                <li class="item-content">
+                  <div class="item-media"><i class="icon icon-f7"></i></div>
+                  <div class="item-inner" onclick="schoolDetail('1')">
+                    <div class="item-title">已上报人数</div>
+                    <div class="item-after">100234<span class="icon icon-right icon-margin"></span></div>
+                  </div>
+                </li>
+                <li class="item-content">
+                  <div class="item-media"><i class="icon icon-f7"></i></div>
+                  <div class="item-inner" onclick="schoolDetail('3')">
+                    <div class="item-title">体温异常人数</div>
+                    <div class="item-after">25234<span class="icon icon-right icon-margin"></span></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div id="tab2" class="tab">
+          <div class="content-block">
+            <p>This is tab 2 content</p>
+          </div>
+        </div>
+       </div>
       </div>
     </div>
-    <div id='select-bar'>
-      <div class='date-box'>
-        <span>时间</span>
-        <input class='date' type="date" value="2015-09-24"/>
-      </div>
-      <div class='select-box'>
-        <select class='select' name='select'>
-          <option value="morning" selected>上午</option>
-          <option value="afternoon">下午</option>
-        </select>
-      </div>
-    </div>
-    <div id='charts-box'>
-      <div class='charts-title-box'>
-        <span class='charts-title'>数据统计</span>
-        <select class='charts-select' name='charts-select'>
-          <option value="all" selected>全部</option>
-          <option value="firstGrade">一年级</option>
-        </select>
-      </div>
-      <div class='contain-chart'>
-        <div id="chart1"></div>
-        <div id="chart2"></div>
-      </div>
-      <div class='prompt-box'>
-        <div class='prompt'></div>
-        <div class='prompt'></div>
-      </div>
-    </div>
-    <button id="goDetail">查看详情</button>
-  </main>
+  </div>
 </body>
+<script src="./js/sm.js"></script>
 <script src='./js/index.js'></script>
 <script>
-let button = document.getElementById('goDetail')
-let iconfont = document.getElementsByClassName('icon-zuojiantou')[0]
-let student = document.getElementsByClassName('student')[0]
-let teacher = document.getElementsByClassName('teacher')[0]
-console.log(student)
-console.log(teacher)
-student.classList.add('blurColor')
+$("#my-input").calendar({
+    value: ['2015-12-06'],
+    dateFormat: 'yyyy-mm-dd',
+    onChange: function(p, values, displayValues){
+      console.log(displayValues)
+    },
+});
 
-button.onclick = () => {
-  window.location.href="./detail.html?uid='safka92434h2uub'&uername='站三'"
-}
-iconfont.onclick = () => {
-  console.log('返回到了app')
-} 
-student.onclick = () => {
-  student.classList.add('blurColor')
-  teacher.classList.remove('blurColor')
-} 
-teacher.onclick = () => {
-  teacher.classList.add('blurColor')
-  student.classList.remove('blurColor')
-} 
+var val = "", displayVal = "";
+$("#picker-input").picker({
+    toolbarTemplate: '<header class="bar bar-nav">\
+    <button class="button button-link pull-right close-picker">确定</button>\
+    <h1 class="title">请选择</h1>\
+    </header>',
+    cols: [
+      {
+          textAlign: 'center',
+          value:["1"],
+          values: ["1", "2"],//隐藏值
+          displayValues: ["上午", "下午",]//显示值
+      }
+    ],
+    formatValue: function (p, values, displayValues) {//自定义方法，用来控制如何显示picker的选中值
+        return displayValues[0];
+    },
+    onClose: function (picker, values, displayValues) {//picker 关闭时的触发动作
+        //这里获取关闭时选择的值
+        val = picker.value[0];
+        displayVal = picker.displayValue[0];
+    },
+});
+
+var val2 = "", displayVal2 = "";
+$("#select-input").picker({
+    toolbarTemplate: '<header class="bar bar-nav">\
+    <button class="button button-link pull-right close-picker">确定</button>\
+    <h1 class="title">请选择</h1>\
+    </header>',
+    cols: [
+      {
+          textAlign: 'center',
+          value:["1"],
+          values: ["1", "2"],//隐藏值
+          displayValues: ["全部", "一年级",]//显示值
+      }
+    ],
+    formatValue: function (p, values, displayValues) {//自定义方法，用来控制如何显示picker的选中值
+        return displayValues[0];
+    },
+    onClose: function (picker, values, displayValues) {//picker 关闭时的触发动作
+        //这里获取关闭时选择的值
+        val2 = picker.value[0];
+        displayVal2 = picker.displayValue[0];
+    },
+});
+
 </script>
 </html>
