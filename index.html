@@ -12,10 +12,12 @@
 <body>
   <!-- page 容器 -->
  <div class="page">
-  <header class="bar bar-nav">
-    <i class="icon icon-left pull-left"></i>
-    <div class="title">师生健康报表</div>
-  </header>
+  <div class="header-block">
+     <header class="bar bar-nav">
+       <i class="icon icon-left pull-left"></i>
+       <div class="title">师生健康报表</div>
+     </header>
+  </div>
   <div class="content">
     <div class="buttons-tab">
       <a href="#tab1" class="tab-link active button">学生健康统计</a>
@@ -27,7 +29,7 @@
           <div class="content-block">
             <div class='picker-date-box'>
               <div class="date-box">
-                <span>时间</span>
+                <span style="font-size: 0.75rem;">时间</span>
                 <span class="icon icon-left"></span>
                 <input class="date-input" type="text" id="my-input"/>
                 <span class="icon icon-right"></span>
@@ -117,19 +119,27 @@
 <script src="./js/sm.js"></script>
 <script src='./js/index.js'></script>
 <script>
+let date = new Date()
+let year = date.getFullYear()
+let month = ((date.getMonth() + 1) < 10 ? ('0' + (date.getMonth() + 1)) : (date.getMonth() + 1))
+let day = (date.getDate() < 10 ? ('0' + date.getDate()) : date.getDate())
+let today = year + '-' + month + '-' + day
+$("#my-input")[0].value = today
+
 $("#my-input").calendar({
-    value: ['2015-12-06'],
+    value: [today],
     dateFormat: 'yyyy-mm-dd',
     onChange: function(p, values, displayValues){
       console.log(displayValues)
     },
 });
 
-var val = "", displayVal = "";
+let val = "", displayVal = "";
+$("#picker-input")[0].value = '上午'
 $("#picker-input").picker({
     toolbarTemplate: '<header class="bar bar-nav">\
-    <button class="button button-link pull-right close-picker">确定</button>\
-    <h1 class="title">请选择</h1>\
+    <button class="button button-link pull-right close-picker" style="color: #FFF;margin-top: .4rem;">确定</button>\
+    <h1 class="title" style="color: #FFF">请选择</h1>\
     </header>',
     cols: [
       {
@@ -149,11 +159,12 @@ $("#picker-input").picker({
     },
 });
 
-var val2 = "", displayVal2 = "";
+let val2 = "", displayVal2 = "";
+$("#select-input")[0].value = "全部";
 $("#select-input").picker({
     toolbarTemplate: '<header class="bar bar-nav">\
-    <button class="button button-link pull-right close-picker">确定</button>\
-    <h1 class="title">请选择</h1>\
+    <button class="button button-link pull-right close-picker" style="color: #FFF;margin-top: .4rem;">确定</button>\
+    <h1 class="title" style="color: #FFF">请选择</h1>\
     </header>',
     cols: [
       {

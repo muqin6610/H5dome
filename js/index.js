@@ -71,7 +71,7 @@
     ]
  }
  let option2 = {
-    color: ["#FF4444", "#3EC32F"], //配置颜色
+    color: ["#3EC32F", "#FF4444"], //配置颜色
     tooltip: {
         trigger: 'item',
         formatter: '{a} <br/>{b}: {c} ({d}%)',

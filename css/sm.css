@@ -297,17 +297,16 @@ html {
     z-index: 2000;
   }
   .header-block {
-    height: 3rem;
+    height: 3rem !important;
   }
   .content {
     position: absolute;
-    top: 0;
+    top: 3rem;
     right: 0;
     bottom: 0;
     left: 0;
     overflow: auto;
     -webkit-overflow-scrolling: touch;
-    margin-top: 1.3rem;
   }
   .bar-nav ~ .content {
     top: 2.2rem;
@@ -403,7 +402,7 @@ html {
     padding: 0.5rem 0 0.5rem 1rem;
   }
   .div-icon-blue {
-    width: 1.5rem;
+    width: 1.2rem;
     height: .9rem;
     border-radius: .3rem;
     background: #6281f4;
@@ -411,21 +410,21 @@ html {
     margin: 0 auto;
   }
   .div-icon-yellow {
-    width: 1.5rem;
+    width: 1.2rem;
     height: .9rem;
     border-radius: .3rem;
     background: #feda39;
     display: inline-block;
   }
   .div-icon-green {
-    width: 1.5rem;
+    width: 1.2rem;
     height: .9rem;
     border-radius: .3rem;
     background: #3ec32f;
     display: inline-block;
   }
   .div-icon-red {
-    width: 1.5rem;
+    width: 1.2rem;
     height: .9rem;
     border-radius: .3rem;
     background: #ff4444;
@@ -439,6 +438,7 @@ html {
     color: #333333;
     display: inline-block;
     height: 100%;
+    font-size: .8rem;
   }
   .content-block .picker-date-box .date-box {
     float: left;
@@ -1091,7 +1091,7 @@ html {
     height: 100%;
     padding: 0;
     margin: 0 -0.5rem;
-    font-size: 1.1rem;
+    font-size: .9rem;
     font-weight: 500;
     line-height: 3rem;
     color: #FFFFFF;
@@ -1228,7 +1228,7 @@ html {
     position: relative;
     z-index: 20;
     padding: .5rem .1rem;
-    font-size: 1.1rem;
+    font-size: .9rem;
     line-height: 2rem;
     color: #FFFFFF;
   }
@@ -2473,6 +2473,7 @@ html {
     position: relative;
     height: 3rem;
     font-weight: bold;
+    margin-top: .5rem;
   }
   .buttons-tab:after {
     content: '';
