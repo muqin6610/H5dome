@@ -57,22 +57,22 @@
                   <div class='report-box'>
                     <div class='reported'>
                       <div class='div-icon-blue'></div>
-                      <div class='content-text' id='text-reported'>已上报: 100540</div>
+                      <div class='content-text'>已上报: 100540</div>
                     </div>
                     <div class='not-reported'>
                       <div class='div-icon-yellow'></div>
-                      <div class='content-text' id='text-notReported'>未上报: 20524</div>
+                      <div class='content-text'>未上报: 20524</div>
                     </div>
                     <div></div>
                   </div>
                   <div class='temperature-box'>
                     <div class='normal'>
                       <div class='div-icon-green'></div>
-                      <div class='content-text' id='text-normal'>正常: 75234</div>
+                      <div class='content-text'>正常: 75234</div>
                     </div>
                     <div class='abnormal'>
                       <div class='div-icon-red'></div>
-                      <div class='content-text' id='text-abnormal'>异常: 2325</div>
+                      <div class='content-text'>异常: 2325</div>
                     </div>
                   </div>
                 </div>
@@ -85,21 +85,21 @@
                   <div class="item-media"><i class="icon icon-f7"></i></div>
                   <div class="item-inner" onclick="schoolDetail('0')">
                     <div class="item-title">未上报人数</div>
-                    <div class="item-after"><span id='notReported'>25234</span><span class="icon icon-right icon-margin"></span></div>
+                    <div class="item-after">25234<span class="icon icon-right icon-margin"></span></div>
                   </div>
                 </li>
                 <li class="item-content">
                   <div class="item-media"><i class="icon icon-f7"></i></div>
                   <div class="item-inner" onclick="schoolDetail('1')">
                     <div class="item-title">已上报人数</div>
-                    <div class="item-after"><span id='reported'>25234</span><span class="icon icon-right icon-margin"></span></div>
+                    <div class="item-after">100234<span class="icon icon-right icon-margin"></span></div>
                   </div>
                 </li>
                 <li class="item-content">
                   <div class="item-media"><i class="icon icon-f7"></i></div>
                   <div class="item-inner" onclick="schoolDetail('3')">
                     <div class="item-title">体温异常人数</div>
-                    <div class="item-after"><span id='abnormal'>54564</span><span class="icon icon-right icon-margin"></span></div>
+                    <div class="item-after">25234<span class="icon icon-right icon-margin"></span></div>
                   </div>
                 </li>
               </ul>
@@ -126,20 +126,74 @@
           </div>
           <div class='picker-box'>
             <input class='picker-input' type="text" id='picker-input2'/>
-            <span class="icon icon-down" onclick="clickPicker2()"></span>
+            <span class="icon icon-down"></span>
           </div>
         </div>
       </div>
-      <div id='card-box'>
 
+      <div class="card">
+        <div class="card-header">截至2020-03-31 08:25:36</div>
+        <div class="card-content">
+          <div class="card-content-inner">李易峰</div>
+        </div>
+        <div class="card-footer">体温正常: 36.3℃</div>
       </div>
-
-    <div class="content index3"></div>
+      <div class="card">
+        <div class="card-header">截至2020-03-31 08:25:36</div>
+        <div class="card-content">
+          <div class="card-content-inner">李易达</div>
+        </div>
+        <div class="card-footer">体温异常: 38.3℃</div>
+      </div>
+    </div>
   </div>
 </body>
 <script src="./js/sm.js"></script>
 <script src='./js/index.js'></script>
 <script>
+$.get('http:/api/index', { id: 1 }, function (res) {
+  console.log(res)
+})
+$.ajax({
+  url: '/api/index1',
+  type: 'get',
+  // 设置的是请求参数
+  data: { id: 1, name: '张三' },
+  // 用于设置响应体的类型 注意 跟 data 参数没关系！！！
+  dataType: 'json',
+  beforeSend: function (xhr) {
+    // 在所有发送请求的操作（open, send）之前执行
+    console.log('beforeSend', xhr)
+  },
+  success: function (res) {
+    // 隐藏 loading
+    // 只有请求成功（状态码为200）才会执行这个函数
+    console.log(res)
+  },
+  error: function (xhr) {
+    // 隐藏 loading
+    // 只有请求不正常（状态码不为200）才会执行
+    console.log('error', xhr)
+  },
+  complete: function (xhr) {
+    // 不管是成功还是失败都是完成，都会执行这个 complete 函数
+    console.log('complete', xhr)
+    let code = '0'
+    if(code !== '0') {
+      $('.index1').hide()
+      $('.index2').show()
+    }else {
+      $('.index2').hide()
+      $('.index1').show()
+    }
+  }
+})
 
+function clickPicker() {
+  $("#picker-input").click()
+}
+function clickSelect() {
+  $("#picker-input2").click()
+}
 </script>
 </html>

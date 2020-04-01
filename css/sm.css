@@ -3623,6 +3623,12 @@ html {
     border-radius: 0 0 0.1rem 0.1rem;
     color: #5f646e;
   }
+  .redColor {
+    color: #ff4d4d;
+  }
+  .blueColor {
+    color: #5ba1ff;
+  }
   .card-footer:before {
     content: '';
     position: absolute;

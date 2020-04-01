@@ -1,4 +1,7 @@
-/**过去url参数的方法*/
+/**全局配置 */
+const BASE_URL = "http://localhost:5500/";
+
+/**获取url参数的方法*/
 function getUrlVars() {
     let vars = [], hash
     let hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&')
@@ -85,3 +88,41 @@ $(document).on('infinite', '.infinite-scroll-bottom',function() {
         $.refreshScroller();
     }, 1000);
 });
+
+/**-------------------------------------------------------------------------------------------------- */
+// 获取url的参数
+let params = getUrlVars()
+let uid = decodeURI(params.uid) + ''
+// let uername = decodeURI(params.uername)
+console.log(uid)
+// console.log(uername)
+
+
+/**ajax请求代码 */
+function getData() {
+  $.showPreloader();
+  //发送异步请求
+  $.ajax({
+    type: 'get',
+    data: {
+      uid: uid,
+    },
+    url: BASE_URL + "api/detail",
+    success: function(data){
+      $.hidePreloader();
+      console.log(data);
+      if(data !== '3') {
+        $('.index2').hide()
+        $('.index1').show()
+      }else {
+        $('.index1').hide()
+        $('.index2').show()
+      }
+    },
+    error: function(){
+      console.log("发送失败");
+      $.hidePreloader();
+    }
+  })
+};
+getData();
