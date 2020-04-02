@@ -169,9 +169,6 @@ $("#picker-parent").picker({ // 初始化选择组件
     },
 });
 
-function clickSelectParent() { // 点击图标
-  $("#select-parent").click()
-};
 function clickPickerParent() { // 点击图标
   $("#picker-parent").click()
 };

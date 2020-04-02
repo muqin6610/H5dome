@@ -1868,8 +1868,8 @@ Device/OS Detection
                 if (isMoved || isTouched) return;
                 // e.preventDefault();
                 isTouched = true;
-                touchStartX = touchCurrentY = e.type === 'touchstart' ? e.targetTouches[0].pageX : e.pageX;
-                touchStartY = touchCurrentY = e.type === 'touchstart' ? e.targetTouches[0].pageY : e.pageY;
+                touchStartX = touchCurrentY = e.type === 'touchstart' ? e.originalEvent.targetTouches[0].pageX : e.pageX;
+                touchStartY = touchCurrentY = e.type === 'touchstart' ? e.originalEvent.targetTouches[0].pageY : e.pageY;
                 touchStartTime = (new Date()).getTime();
                 percentage = 0;
                 allowItemClick = true;
@@ -1879,8 +1879,8 @@ Device/OS Detection
             function handleTouchMove (e) {
                 if (!isTouched) return;
 
-                touchCurrentX = e.type === 'touchmove' ? e.targetTouches[0].pageX : e.pageX;
-                touchCurrentY = e.type === 'touchmove' ? e.targetTouches[0].pageY : e.pageY;
+                touchCurrentX = e.type === 'touchmove' ? e.originalEvent.targetTouches[0].pageX : e.pageX;
+                touchCurrentY = e.type === 'touchmove' ? e.originalEvent.targetTouches[0].pageY : e.pageY;
                 if (typeof isScrolling === 'undefined') {
                     isScrolling = !!(isScrolling || Math.abs(touchCurrentY - touchStartY) > Math.abs(touchCurrentX - touchStartX));
                 }
@@ -2769,7 +2769,7 @@ Device/OS Detection
                 if (isMoved || isTouched) return;
                 e.preventDefault();
                 isTouched = true;
-                touchStartY = touchCurrentY = e.type === 'touchstart' ? e.targetTouches[0].pageY : e.pageY;
+                touchStartY = touchCurrentY = e.type === 'touchstart' ? e.originalEvent.targetTouches[0].pageY : e.pageY;
                 touchStartTime = (new Date()).getTime();
 
                 allowItemClick = true;
@@ -2780,7 +2780,7 @@ Device/OS Detection
                 if (!isTouched) return;
                 e.preventDefault();
                 allowItemClick = false;
-                touchCurrentY = e.type === 'touchmove' ? e.targetTouches[0].pageY : e.pageY;
+                touchCurrentY = e.type === 'touchmove' ? e.originalEvent.targetTouches[0].pageY : e.pageY;
                 if (!isMoved) {
                     // First move
                     $.cancelAnimationFrame(animationFrameId);
@@ -5932,8 +5932,8 @@ Device/OS Detection
             isTouched = true;
             isScrolling = undefined;
             wasScrolled = undefined;
-            touchesStart.x = e.type === 'touchstart' ? e.targetTouches[0].pageX : e.pageX;
-            touchesStart.y = e.type === 'touchstart' ? e.targetTouches[0].pageY : e.pageY;
+            touchesStart.x = e.type === 'touchstart' ? e.originalEvent.targetTouches[0].pageX : e.pageX;
+            touchesStart.y = e.type === 'touchstart' ? e.originalEvent.targetTouches[0].pageY : e.pageY;
             touchStartTime = (new Date()).getTime();
             /*jshint validthis:true */
             container = $(this);
@@ -5941,8 +5941,8 @@ Device/OS Detection
 
         function handleTouchMove(e) {
             if (!isTouched) return;
-            var pageX = e.type === 'touchmove' ? e.targetTouches[0].pageX : e.pageX;
-            var pageY = e.type === 'touchmove' ? e.targetTouches[0].pageY : e.pageY;
+            var pageX = e.type === 'touchmove' ? e.originalEvent.targetTouches[0].pageX : e.pageX;
+            var pageY = e.type === 'touchmove' ? e.originalEvent.targetTouches[0].pageY : e.pageY;
             if (typeof isScrolling === 'undefined') {
                 isScrolling = !!(isScrolling || Math.abs(pageY - touchesStart.y) > Math.abs(pageX - touchesStart.x));
             }
@@ -6241,8 +6241,8 @@ Device/OS Detection
             if (!(swipePanelCloseOpposite || swipePanelOnlyClose)) {
                 if ($('.panel.active').length > 0 && !panel.hasClass('active')) return;
             }
-            // touchesStart.x = e.type === 'touchstart' ? e.targetTouches[0].pageX : e.pageX;
-            // touchesStart.y = e.type === 'touchstart' ? e.targetTouches[0].pageY : e.pageY;
+            touchesStart.x = e.type === 'touchstart' ? e.originalEvent.targetTouches[0].pageX : e.pageX;
+            touchesStart.y = e.type === 'touchstart' ? e.originalEvent.targetTouches[0].pageY : e.pageY;
             if (swipePanelCloseOpposite || swipePanelOnlyClose) {
                 if ($('.panel.active').length > 0) {
                     side = $('.panel.active').hasClass('panel-left') ? 'left' : 'right';
@@ -6276,8 +6276,8 @@ Device/OS Detection
             if (!isTouched) return;
             if (!panel[0]) return;
             if (e.f7PreventPanelSwipe) return;
-            var pageX = e.type === 'touchmove' ? e.targetTouches[0].pageX : e.pageX;
-            var pageY = e.type === 'touchmove' ? e.targetTouches[0].pageY : e.pageY;
+            var pageX = e.type === 'touchmove' ? e.originalEvent.targetTouches[0].pageX : e.pageX;
+            var pageY = e.type === 'touchmove' ? e.originalEvent.targetTouches[0].pageY : e.pageY;
             if (typeof isScrolling === 'undefined') {
                 isScrolling = !!(isScrolling || Math.abs(pageY - touchesStart.y) > Math.abs(pageX - touchesStart.x));
             }
