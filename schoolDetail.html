@@ -15,7 +15,7 @@
     <div class="header-block">
        <header class="bar bar-nav">
          <i class="icon icon-left pull-left" id="backIndex"></i>
-         <div class="title">师生健康报表</div>
+         <div class="title school-title">师生健康报表</div>
        </header>
     </div>
 
@@ -26,7 +26,7 @@
             <div class="item-media"><i class="icon icon-f7"></i></div>
             <div class="item-inner">
               <div class="item-title">学校名称</div>
-              <div><span class='status-title'>未测温人数</span><i class="iconfont icon-xiangshangjiantou"></i></div>
+              <div><span class='school-item-title'>未测温人数</span><i class="iconfont icon-xiangshangjiantou"></i></div>
             </div>
           </li>
         </ul>
@@ -36,8 +36,8 @@
           <li class="item-content">
             <div class="item-media"><i class="icon icon-f7"></i></div>
             <div class="item-inner" onclick="classDetail('0')">
-              <div class="item-title">爱德华学校</div>
-              <div class="item-after">6622<span class="icon icon-right icon-margin"></span></div>
+              <div class="item-title">爱华学校</div>
+              <div class="item-after">0<span class="icon icon-right icon-margin"></span></div>
             </div>
           </li>
         </ul>
@@ -48,6 +48,8 @@
 <script src="./js/sm.js"></script>
 <script src='./js/detail.js'></script>
 <script>
-
+// 设置顶部状态标题
+$('.school-title').text(status + '人数统计')
+$('.school-item-title').text(status + '人数')
 </script>
 </html>

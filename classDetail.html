@@ -15,7 +15,7 @@
     <div class="header-block">
        <header class="bar bar-nav">
          <i class="icon icon-left pull-left" id="backIndex"></i>
-         <div class="title">爱华学校上报详情</div>
+         <div class="title class-title">上报详情</div>
        </header>
     </div>
 
@@ -27,7 +27,7 @@
               <div class="item-inner">
                 <div class="item-title">年级</div>
                 <div class="item-title">班级</div>
-                <div><span>未测温人数</span><i class="iconfont icon-xiangshangjiantou"></i></div>
+                <div><span class='class-item-title'>未测温人数</span><i class="iconfont icon-xiangshangjiantou"></i></div>
               </div>
             </li>
           </ul>
@@ -186,6 +186,8 @@
 <script src="./js/sm.js"></script>
 <script src='./js/detail.js'></script>
 <script>
-
+// 设置顶部状态标题
+$('.class-title').text(status + '详情')
+$('.class-item-title').text(itemStatus + '人数')
 </script>
 </html>

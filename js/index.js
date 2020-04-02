@@ -3,11 +3,11 @@
 // 跳转到详情
 function schoolDetail(val) {
   if(val === '0') {
-    window.location.href="./schoolDetail.html?uid=0&status=未测温人数"
+    window.location.href="./schoolDetail.html?uid=0&status=未测温"
   }else if(val === '1') {
-    window.location.href="./classDetail.html?uid=1&status=已测温人数"
+    window.location.href="./schoolDetail.html?uid=1&status=已测温"
   }else {
-    window.location.href="./classDetail.html?uid=2&status=体温异常人数"
+    window.location.href="./schoolDetail.html?uid=2&status=体温异常"
   }
 };
 // 返回app

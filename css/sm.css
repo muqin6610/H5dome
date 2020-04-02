@@ -367,7 +367,7 @@ html {
   }
   .charts-title {
     float: left;
-    font-size: .8rem;
+    font-size: .75rem;
     line-height: 2rem;
     margin-left: 0.3rem;
     color: #333333;
@@ -375,7 +375,7 @@ html {
   }
   .charts-select {
     float: right;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     margin-top: 0.3rem;
     margin-right: 0.3rem;
   }
@@ -448,12 +448,13 @@ html {
   .content-text {
     color: #333333;
     display: inline-block;
-    font-size: .8rem;
+    font-size: .75rem;
   }
   .content-block .picker-date-box .date-box {
     float: left;
   } 
   .content-block .picker-date-box .picker-box {
+    font-size: .75rem;
     float: right;
   } 
   .content-block .picker-date-box .picker-input {
@@ -1097,16 +1098,20 @@ html {
   .title {
     position: absolute;
     display: block;
-    width: 100%;
+    width: 85%;
     height: 100%;
     padding: 0;
     margin: 0 -0.5rem;
-    font-size: .9rem;
+    font-size: .75rem;
     font-weight: 500;
     line-height: 3rem;
     color: #FFFFFF;
     text-align: center;
     white-space: nowrap;
+    white-space:nowrap; 
+    overflow:hidden;
+    text-overflow:ellipsis;
+    display: inline-block;
   }
   .title a {
     color: inherit;
@@ -1238,7 +1243,7 @@ html {
     position: relative;
     z-index: 20;
     padding: .5rem .1rem;
-    font-size: .9rem;
+    font-size: .75rem;
     line-height: 2rem;
     color: #FFFFFF;
   }
@@ -1642,6 +1647,13 @@ html {
     text-overflow: ellipsis;
     max-width: 100%;
     color: #333333;
+    font-size: .75rem;
+  }
+  .school-item-title {
+    font-size: .75rem;
+  }
+  .class-item-title {
+    font-size: .75rem;
   }
   .list-block .item-title.label {
     width: 35%;
@@ -1674,6 +1686,9 @@ html {
     display: -webkit-flex;
     display: flex;
     max-height: 1.4rem;
+  }
+  .blackColor {
+    color: #333333 !important;
   }
   .list-block .smart-select .item-after {
     max-width: 70%;
@@ -2514,7 +2529,7 @@ html {
   }
   .buttons-tab .button {
     color: #333333;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     width: 100%;
     height: 3rem;
     line-height: 3rem;
@@ -3634,10 +3649,10 @@ html {
     color: #5f646e;
   }
   .redColor {
-    color: #ff4d4d;
+    color: #ff4d4d !important;
   }
   .blueColor {
-    color: #5ba1ff;
+    color: #5ba1ff !important;
   }
   .card-footer:before {
     content: '';

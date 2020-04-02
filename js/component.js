@@ -26,11 +26,11 @@ $("#input-directorTab").calendar({ // 初始化日历组件
     },
 });
 
-$("#picker-director")[0].value = '上午'; // 默认选择上午
+// $("#picker-director")[0].value = '上午'; // 默认选择上午
 $("#picker-director").picker({ // 初始化选择组件
     toolbarTemplate: '<header class="bar bar-nav">\
     <button class="button button-link pull-right close-picker" style="color: #FFF;margin-top: .4rem;">确定</button>\
-    <h1 class="title" style="color: #FFF">请选择</h1>\
+    <h1 class="title" style="color: #FFF">请选择时间段</h1>\
     </header>', // 设置头部标题
     cols: [
       {
@@ -50,11 +50,11 @@ $("#picker-director").picker({ // 初始化选择组件
     },
 });
 
-$("#picker-directorTab")[0].value = '上午'; // 默认选择上午
+// $("#picker-directorTab")[0].value = '上午'; // 默认选择上午
 $("#picker-directorTab").picker({ // 初始化选择组件
     toolbarTemplate: '<header class="bar bar-nav">\
     <button class="button button-link pull-right close-picker" style="color: #FFF;margin-top: .4rem;">确定</button>\
-    <h1 class="title" style="color: #FFF">请选择</h1>\
+    <h1 class="title" style="color: #FFF">请选择时间段</h1>\
     </header>', // 设置头部标题
     cols: [
       {
@@ -74,11 +74,11 @@ $("#picker-directorTab").picker({ // 初始化选择组件
     },
 });
 
-$("#select-director")[0].value = "全部"; // 默认选择全部
+// $("#select-director")[0].value = "全部"; // 默认选择全部
 $("#select-director").picker({ // 初始化选择组件
     toolbarTemplate: '<header class="bar bar-nav">\
     <button class="button button-link pull-right close-picker" style="color: #FFF;margin-top: .4rem;">确定</button>\
-    <h1 class="title" style="color: #FFF">请选择</h1>\
+    <h1 class="title" style="color: #FFF">请选择部门</h1>\
     </header>',
     cols: [
       {
@@ -98,11 +98,11 @@ $("#select-director").picker({ // 初始化选择组件
     },
 });
 
-$("#select-directorTab")[0].value = "全部"; // 默认选择全部
+// $("#select-directorTab")[0].value = "全部"; // 默认选择全部
 $("#select-directorTab").picker({ // 初始化选择组件
     toolbarTemplate: '<header class="bar bar-nav">\
     <button class="button button-link pull-right close-picker" style="color: #FFF;margin-top: .4rem;">确定</button>\
-    <h1 class="title" style="color: #FFF">请选择</h1>\
+    <h1 class="title" style="color: #FFF">请选择部门</h1>\
     </header>',
     cols: [
       {
@@ -145,11 +145,11 @@ $("#input-parent").calendar({ // 初始化日历组件
     },
 });
 
-$("#picker-parent")[0].value = '上午'; // 默认选择上午
+// $("#picker-parent")[0].value = '上午'; // 默认选择上午
 $("#picker-parent").picker({ // 初始化选择组件
     toolbarTemplate: '<header class="bar bar-nav">\
     <button class="button button-link pull-right close-picker" style="color: #FFF;margin-top: .4rem;">确定</button>\
-    <h1 class="title" style="color: #FFF">请选择</h1>\
+    <h1 class="title" style="color: #FFF">请选择时间段</h1>\
     </header>', // 设置头部标题
     cols: [
       {
@@ -177,11 +177,11 @@ function clickPickerParent() { // 点击图标
 };
 
 /**教师相关组件 */
-$("#select-teacher")[0].value = "全部"; // 默认选择全部
+// $("#select-teacher")[0].value = "全部"; // 默认选择全部
 $("#select-teacher").picker({ // 初始化选择组件
     toolbarTemplate: '<header class="bar bar-nav">\
     <button class="button button-link pull-right close-picker" style="color: #FFF;margin-top: .4rem;">确定</button>\
-    <h1 class="title" style="color: #FFF">请选择</h1>\
+    <h1 class="title" style="color: #FFF">请选择部门</h1>\
     </header>',
     cols: [
       {

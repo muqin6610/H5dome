@@ -30,12 +30,12 @@
             <div class='picker-date-box'>
               <div class="date-box">
                 <span style="font-size: 0.75rem;">时间</span>
-                <span class="icon icon-left"></span>
+                <span class="icon icon-left" onclick="clickPickerDirector()"></span>
                 <input class="date-input" type="text" id="input-director"/>
-                <span class="icon icon-right"></span>
+                <span class="icon icon-right" onclick="clickPickerDirector()"></span>
               </div>
               <div class='picker-box'>
-                <input class='picker-input' type="text" id='picker-director'/>
+                <input class='picker-input' type="text" id='picker-director' placeholder="上午"/>
                 <span class="icon icon-down" onclick="clickPickerDirector()"></span>
               </div>
             </div>
@@ -45,8 +45,10 @@
                 <div class='charts-title-box'>
                   <span class='charts-title'>数据统计</span>
                   <div class='charts-select'>
-                    <input type="text" id='select-director'/>
-                    <span class="icon icon-down" onclick="clickSelectDirector()"></span>
+                    <div class='select-director-div'>
+                      <input type="text" id='select-director' placeholder="全部"/>
+                      <span class="icon icon-down" onclick="clickSelectDirector()"></span>
+                    </div>
                   </div>
                 </div>
                 <div class='contain-chart'>
@@ -111,12 +113,12 @@
             <div class='picker-date-box'>
               <div class="date-box">
                 <span style="font-size: 0.75rem;">时间</span>
-                <span class="icon icon-left"></span>
+                <span class="icon icon-left" onclick="clickPickerDirectorTab()"></span>
                 <input class="date-input" type="text" id="input-directorTab"/>
-                <span class="icon icon-right"></span>
+                <span class="icon icon-right" onclick="clickPickerDirectorTab()"></span>
               </div>
               <div class='picker-box'>
-                <input class='picker-input' type="text" id='picker-directorTab'/>
+                <input class='picker-input' type="text" id='picker-directorTab' placeholder="上午"/>
                 <span class="icon icon-down" onclick="clickPickerDirectorTab()"></span>
               </div>
             </div>
@@ -126,7 +128,7 @@
                 <div class='charts-title-box'>
                   <span class='charts-title'>数据统计</span>
                   <div class='charts-select'>
-                    <input type="text" id='select-directorTab'/>
+                    <input type="text" id='select-directorTab' placeholder="全部"/>
                     <span class="icon icon-down" onclick="clickSelectDirectorTab()"></span>
                   </div>
                 </div>
@@ -198,7 +200,7 @@
             <div class='charts-title-box'>
               <span class='charts-title'>学生数据统计</span>
               <div class='charts-select'>
-                <input type="text" id='select-teacher'/>
+                <input type="text" id='select-teacher' placeholder="全部"/>
                 <span class="icon icon-down" onclick="clickSelectTeacher()"></span>
               </div>
             </div>
@@ -270,7 +272,7 @@
             <span class="icon icon-right" onclick="clickPickerParent()"></span>
           </div>
           <div class='picker-box'>
-            <input class='picker-input' type="text" id='picker-parent'/>
+            <input class='picker-input' type="text" id='picker-parent' placeholder="上午"/>
             <span class="icon icon-down" onclick="clickPickerParent()"></span>
           </div>
         </div>
@@ -285,6 +287,10 @@
 <script>
   /**全局配置 */
   const BASE_URL = "http://localhost:5500/";
+  /**初始化 */
+  $(document).ready(function () {
+      $.init();
+  });
   /**默认显示*/
   $('.index-default').show();
   $('.index-Parent').hide();
