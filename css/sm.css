@@ -361,7 +361,7 @@ html {
     display: flex;
     width: 100%;
   }
-  #chart2 {
+  .chartBox {
     width: 50%;
     height: 10rem;
   }
@@ -379,14 +379,25 @@ html {
     margin-top: 0.3rem;
     margin-right: 0.3rem;
   }
-  #select-input {
+  #select-director {
     border: 0;
     width: 3.5rem;
     background: #ffffff;
   }
-  #chart1 {
-    width: 50%;
-    height: 10rem;
+  #select-directorTab {
+    border: 0;
+    width: 3.5rem;
+    background: #ffffff;
+  }
+  #select-teacher {
+    border: 0;
+    width: 3.5rem;
+    background: #ffffff;
+  }
+  #select-input2 {
+    border: 0;
+    width: 3.5rem;
+    background: #ffffff;
   }
   .prompt-box {
     width: 100%;
@@ -437,7 +448,6 @@ html {
   .content-text {
     color: #333333;
     display: inline-block;
-    height: 100%;
     font-size: .8rem;
   }
   .content-block .picker-date-box .date-box {

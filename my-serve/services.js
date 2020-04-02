@@ -45,12 +45,20 @@ exports.index = (req, res)=>{
         res.send({
             uid: '0',
             charts1: [
-                {value: 100, name: '已上报'},
-                {value: 25, name: '未上报'},
+                {value: 21510, name: '已测温'},
+                {value: 2151, name: '未测温'},
             ],
             charts2: [
-                {value: 75, name: '正常'},
-                {value: 25, name: '异常'},
+                {value: 15401, name: '正常'},
+                {value: 1515, name: '异常'},
+            ],
+            charts3: [
+                {value: 11510, name: '已测温'},
+                {value: 323, name: '未测温'},
+            ],
+            charts4: [
+                {value: 950, name: '正常'},
+                {value: 55, name: '异常'},
             ],
         })
     }, 500);
@@ -59,9 +67,6 @@ exports.index = (req, res)=>{
 exports.detail = (req, res)=>{
     let params = url.parse(req.url, true).query
     console.log(params)
-    if(params === '0') {
-        console.log('222222222222222222222222')
-    }
     setTimeout(() => {
         res.send('detail')
     }, 500);

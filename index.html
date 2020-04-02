@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>H5测温</title>
+    <title>师生健康报表</title>
     <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/echarts/4.7.0/echarts-en.common.js'></script>
     <link rel="stylesheet" href="./css/sm.css">
@@ -18,7 +18,7 @@
        <div class="title">师生健康报表</div>
      </header>
   </div>
-  <div class="content index1">
+  <div class="content index-director">
     <div class="buttons-tab">
       <a href="#tab1" class="tab-link active button">学生健康统计</a>
       <a href="#tab2" class="tab-link button">老师健康统计</a>
@@ -31,12 +31,12 @@
               <div class="date-box">
                 <span style="font-size: 0.75rem;">时间</span>
                 <span class="icon icon-left"></span>
-                <input class="date-input" type="text" id="my-input"/>
+                <input class="date-input" type="text" id="input-director"/>
                 <span class="icon icon-right"></span>
               </div>
               <div class='picker-box'>
-                <input class='picker-input' type="text" id='picker-input'/>
-                <span class="icon icon-down" onclick="clickPicker()"></span>
+                <input class='picker-input' type="text" id='picker-director'/>
+                <span class="icon icon-down" onclick="clickPickerDirector()"></span>
               </div>
             </div>
             
@@ -45,34 +45,34 @@
                 <div class='charts-title-box'>
                   <span class='charts-title'>数据统计</span>
                   <div class='charts-select'>
-                    <input type="text" id='select-input'/>
-                    <span class="icon icon-down" onclick="clickSelect()"></span>
+                    <input type="text" id='select-director'/>
+                    <span class="icon icon-down" onclick="clickSelectDirector()"></span>
                   </div>
                 </div>
                 <div class='contain-chart'>
-                  <div id="chart1"></div>
-                  <div id="chart2"></div>
+                  <div class='chartBox' id="chartDirector1"></div>
+                  <div class='chartBox' id="chartDirector2"></div>
                 </div>
                 <div class='prompt-box'>
                   <div class='report-box'>
                     <div class='reported'>
                       <div class='div-icon-blue'></div>
-                      <div class='content-text' id='text-reported'>已上报: 100540</div>
+                      <div class='content-text' id='text-reportedDirector'>已测温: 0</div>
                     </div>
                     <div class='not-reported'>
                       <div class='div-icon-yellow'></div>
-                      <div class='content-text' id='text-notReported'>未上报: 20524</div>
+                      <div class='content-text' id='text-notReportedDirector'>未测温: 0</div>
                     </div>
                     <div></div>
                   </div>
                   <div class='temperature-box'>
                     <div class='normal'>
                       <div class='div-icon-green'></div>
-                      <div class='content-text' id='text-normal'>正常: 75234</div>
+                      <div class='content-text' id='text-normalDirector'>正常: 0</div>
                     </div>
                     <div class='abnormal'>
                       <div class='div-icon-red'></div>
-                      <div class='content-text' id='text-abnormal'>异常: 2325</div>
+                      <div class='content-text' id='text-abnormalDirector'>异常: 0</div>
                     </div>
                   </div>
                 </div>
@@ -84,22 +84,22 @@
                 <li class="item-content">
                   <div class="item-media"><i class="icon icon-f7"></i></div>
                   <div class="item-inner" onclick="schoolDetail('0')">
-                    <div class="item-title">未上报人数</div>
-                    <div class="item-after"><span id='notReported'>25234</span><span class="icon icon-right icon-margin"></span></div>
+                    <div class="item-title">未测温人数</div>
+                    <div class="item-after"><span id='notReportedDirector'>0</span><span class="icon icon-right icon-margin"></span></div>
                   </div>
                 </li>
                 <li class="item-content">
                   <div class="item-media"><i class="icon icon-f7"></i></div>
                   <div class="item-inner" onclick="schoolDetail('1')">
-                    <div class="item-title">已上报人数</div>
-                    <div class="item-after"><span id='reported'>25234</span><span class="icon icon-right icon-margin"></span></div>
+                    <div class="item-title">已测温人数</div>
+                    <div class="item-after"><span id='reportedDirector'>0</span><span class="icon icon-right icon-margin"></span></div>
                   </div>
                 </li>
                 <li class="item-content">
                   <div class="item-media"><i class="icon icon-f7"></i></div>
                   <div class="item-inner" onclick="schoolDetail('3')">
                     <div class="item-title">体温异常人数</div>
-                    <div class="item-after"><span id='abnormal'>54564</span><span class="icon icon-right icon-margin"></span></div>
+                    <div class="item-after"><span id='abnormalDirector'>0</span><span class="icon icon-right icon-margin"></span></div>
                   </div>
                 </li>
               </ul>
@@ -108,38 +108,195 @@
         </div>
         <div id="tab2" class="tab">
           <div class="content-block">
-            <p>This is tab 2 content</p>
+            <div class='picker-date-box'>
+              <div class="date-box">
+                <span style="font-size: 0.75rem;">时间</span>
+                <span class="icon icon-left"></span>
+                <input class="date-input" type="text" id="input-directorTab"/>
+                <span class="icon icon-right"></span>
+              </div>
+              <div class='picker-box'>
+                <input class='picker-input' type="text" id='picker-directorTab'/>
+                <span class="icon icon-down" onclick="clickPickerDirectorTab()"></span>
+              </div>
+            </div>
+            
+            <div class='statistics'>
+              <div id='charts-box'>
+                <div class='charts-title-box'>
+                  <span class='charts-title'>数据统计</span>
+                  <div class='charts-select'>
+                    <input type="text" id='select-directorTab'/>
+                    <span class="icon icon-down" onclick="clickSelectDirectorTab()"></span>
+                  </div>
+                </div>
+                <div class='contain-chart'>
+                  <div class='chartBox' id="chartDirectorTab1"></div>
+                  <div class='chartBox' id="chartDirectorTab2"></div>
+                </div>
+                <div class='prompt-box'>
+                  <div class='report-box'>
+                    <div class='reported'>
+                      <div class='div-icon-blue'></div>
+                      <div class='content-text' id='text-reportedDirectorTab'>已测温: 0</div>
+                    </div>
+                    <div class='not-reported'>
+                      <div class='div-icon-yellow'></div>
+                      <div class='content-text' id='text-notReportedDirectorTab'>未测温: 0</div>
+                    </div>
+                    <div></div>
+                  </div>
+                  <div class='temperature-box'>
+                    <div class='normal'>
+                      <div class='div-icon-green'></div>
+                      <div class='content-text' id='text-normalDirectorTab'>正常: 0</div>
+                    </div>
+                    <div class='abnormal'>
+                      <div class='div-icon-red'></div>
+                      <div class='content-text' id='text-abnormalDirectorTab'>异常: 0</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="list-block">
+              <ul>
+                <li class="item-content">
+                  <div class="item-media"><i class="icon icon-f7"></i></div>
+                  <div class="item-inner" onclick="schoolDetail('0')">
+                    <div class="item-title">未测温人数</div>
+                    <div class="item-after"><span id='notReportedDirectorTab'>0</span><span class="icon icon-right icon-margin"></span></div>
+                  </div>
+                </li>
+                <li class="item-content">
+                  <div class="item-media"><i class="icon icon-f7"></i></div>
+                  <div class="item-inner" onclick="schoolDetail('1')">
+                    <div class="item-title">已测温人数</div>
+                    <div class="item-after"><span id='reportedDirectorTab'>0</span><span class="icon icon-right icon-margin"></span></div>
+                  </div>
+                </li>
+                <li class="item-content">
+                  <div class="item-media"><i class="icon icon-f7"></i></div>
+                  <div class="item-inner" onclick="schoolDetail('3')">
+                    <div class="item-title">体温异常人数</div>
+                    <div class="item-after"><span id='abnormalDirectorTab'>0</span><span class="icon icon-right icon-margin"></span></div>
+                  </div>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
        </div>
       </div>
     </div>
     
-    <div class="content index2">
+    <div class="content-block index-teacher">
+      <div class="content">
+        <div class='statistics'>
+          <div id='charts-box'>
+            <div class='charts-title-box'>
+              <span class='charts-title'>学生数据统计</span>
+              <div class='charts-select'>
+                <input type="text" id='select-teacher'/>
+                <span class="icon icon-down" onclick="clickSelectTeacher()"></span>
+              </div>
+            </div>
+            <div class='contain-chart'>
+              <div class='chartBox' id="chartTeacher1"></div>
+              <div class='chartBox' id="chartTeacher2"></div>
+            </div>
+            <div class='prompt-box'>
+              <div class='report-box'>
+                <div class='reported'>
+                  <div class='div-icon-blue'></div>
+                  <div class='content-text' id='text-reportedTeacher'>已测温: 0</div>
+                </div>
+                <div class='not-reported'>
+                  <div class='div-icon-yellow'></div>
+                  <div class='content-text' id='text-notReportedTeacher'>未测温: 0</div>
+                </div>
+                <div></div>
+              </div>
+              <div class='temperature-box'>
+                <div class='normal'>
+                  <div class='div-icon-green'></div>
+                  <div class='content-text' id='text-normalTeacher'>正常: 0</div>
+                </div>
+                <div class='abnormal'>
+                  <div class='div-icon-red'></div>
+                  <div class='content-text' id='text-abnormalTeacher'>异常: 0</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="list-block">
+          <ul>
+            <li class="item-content">
+              <div class="item-media"><i class="icon icon-f7"></i></div>
+              <div class="item-inner" onclick="schoolDetail('0')">
+                <div class="item-title">未测温人数</div>
+                <div class="item-after"><span id='notReportedTeacher'>0</span><span class="icon icon-right icon-margin"></span></div>
+              </div>
+            </li>
+            <li class="item-content">
+              <div class="item-media"><i class="icon icon-f7"></i></div>
+              <div class="item-inner" onclick="schoolDetail('1')">
+                <div class="item-title">已测温人数</div>
+                <div class="item-after"><span id='reportedTeacher'>0</span><span class="icon icon-right icon-margin"></span></div>
+              </div>
+            </li>
+            <li class="item-content">
+              <div class="item-media"><i class="icon icon-f7"></i></div>
+              <div class="item-inner" onclick="schoolDetail('3')">
+                <div class="item-title">体温异常人数</div>
+                <div class="item-after"><span id='abnormalTeacher'>0</span><span class="icon icon-right icon-margin"></span></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="content index-Parent">
       <div class="content-block">
         <div class='picker-date-box'>
           <div class="date-box">
             <span style="font-size: 0.75rem;">时间</span>
-            <span class="icon icon-left"></span>
-            <input class="date-input" type="text" id="my-input2"/>
-            <span class="icon icon-right"></span>
+            <span class="icon icon-left" onclick="clickPickerParent()"></span>
+            <input class="date-input" type="text" id="input-parent"/>
+            <span class="icon icon-right" onclick="clickPickerParent()"></span>
           </div>
           <div class='picker-box'>
-            <input class='picker-input' type="text" id='picker-input2'/>
-            <span class="icon icon-down" onclick="clickPicker2()"></span>
+            <input class='picker-input' type="text" id='picker-parent'/>
+            <span class="icon icon-down" onclick="clickPickerParent()"></span>
           </div>
         </div>
       </div>
       <div id='card-box'>
 
       </div>
-
-    <div class="content index3"></div>
+    </div>
+    <div class="content index-default"></div>
   </div>
 </body>
+<script>
+  /**全局配置 */
+  const BASE_URL = "http://localhost:5500/";
+  /**默认显示*/
+  $('.index-default').show();
+  $('.index-Parent').hide();
+  $('.index-teacher').hide();
+  $('.index-director').hide();
+</script>
 <script src="./js/sm.js"></script>
+<script src='./js/component.js'></script>
+<script src='./js/echartsInit.js'></script>
 <script src='./js/index.js'></script>
 <script>
-
+  // 获取页面数据
+  getData();
 </script>
 </html>

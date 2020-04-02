@@ -21,25 +21,25 @@ $('#backIndex').click(function(){
 // 跳转到班级详情
 function classDetail(val) {
   if(val === '0') {
-    window.location.href="./classDetail.html?uid='0'&uername='爱华学校'"
+    window.location.href="./classDetail.html?uid=0&uername=爱华学校"
   }else if(val === '1') {
-    window.location.href="./classDetail.html?uid='1'&uername='南山学校'"
+    window.location.href="./classDetail.html?uid=1&uername=南山学校"
   }else if(val === '2'){
-    window.location.href="./classDetail.html?uid='2'&uername='宝安学校'"
+    window.location.href="./classDetail.html?uid=2&uername=宝安学校"
   }else {
-      window.location.href="./classDetail.html?uid='3'&uername='兴东学校'"
+      window.location.href="./classDetail.html?uid=3&uername=兴东学校"
   }
 }
 // 跳转到人员详情
 function peopelDetail(val) {
   if(val === '0') {
-    window.location.href="./peopelDetail.html?uid='0'&uername='爱华学校'"
+    window.location.href="./peopelDetail.html?uid=0&uername=一年级一班"
   }else if(val === '1') {
-    window.location.href="./peopelDetail.html?uid='1'&uername='南山学校'"
+    window.location.href="./peopelDetail.html?uid=1&uername=二年级一班"
   }else if(val === '2'){
-    window.location.href="./peopelDetail.html?uid='2'&uername='宝安学校'"
+    window.location.href="./peopelDetail.html?uid=2&uername=二年级二班"
   }else {
-      window.location.href="./peopelDetail.html?uid='3'&uername='兴东学校'"
+      window.location.href="./peopelDetail.html?uid=3&uername=三年级三班"
   }
 }
 
@@ -92,11 +92,13 @@ $(document).on('infinite', '.infinite-scroll-bottom',function() {
 /**-------------------------------------------------------------------------------------------------- */
 // 获取url的参数
 let params = getUrlVars()
-let uid = decodeURI(params.uid) + ''
-// let uername = decodeURI(params.uername)
+let uid = decodeURI(params.uid)
+let status = decodeURI(params.status)
 console.log(uid)
-// console.log(uername)
+console.log(status)
 
+// 设置顶部状态标题
+$('.status-title').text(status)
 
 /**ajax请求代码 */
 function getData() {
@@ -106,6 +108,7 @@ function getData() {
     type: 'get',
     data: {
       uid: uid,
+      status: status,
     },
     url: BASE_URL + "api/detail",
     success: function(data){
