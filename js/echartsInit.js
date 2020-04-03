@@ -329,22 +329,45 @@ let myChart6 = echarts.init(document.getElementById('chartDirectorTab2'), null, 
 
 // 获取图表数据
 $.ajax({
-  type: 'get',
+  type: 'post',
   url: BASE_URL + "api/index",
+  data: {
+    directorDate: directorDate,
+    directorPeriod: directorPeriod,
+    directorDepart: directorDepart,
+  },
   success: (data) => {
-    let { uid, charts1, charts2, charts3, charts4} = data;
+    let { uid, charts1, charts2 } = data;
     if(uid !== '3') {
       option1.series[0].data = charts1;
       option2.series[0].data = charts2;
       option3.series[0].data = charts1;
       option4.series[0].data = charts2;
-      option5.series[0].data = charts3;
-      option6.series[0].data = charts4;
       // 使用刚指定的配置项和数据显示图表。
       myChart1.setOption(option1);
       myChart2.setOption(option2);
       myChart3.setOption(option3);
       myChart4.setOption(option4);
+    }
+  },
+  error: function(){
+    console.log("发送失败");
+  }
+})
+$.ajax({
+  type: 'post',
+  url: BASE_URL + "api/index",
+  data: {
+    directorTabDate: directorTabDate,
+    directorTabPeriod: directorTabPeriod,
+    directorTabDepart: directorTabDepart,
+  },
+  success: (data) => {
+    let { uid, charts3, charts4} = data;
+    if(uid !== '3') {
+      option5.series[0].data = charts3;
+      option6.series[0].data = charts4;
+      // 使用刚指定的配置项和数据显示图表。
       myChart5.setOption(option5);
       myChart6.setOption(option6);
     }

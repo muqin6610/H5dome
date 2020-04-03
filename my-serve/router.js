@@ -7,7 +7,7 @@ router.get('/api/login', services.login)
 // 注册功能
 router.post('/api/register', services.register)
 // 获取index数据
-router.get('/api/index', services.index)
+router.post('/api/index', services.index)
 // 获取detail数据
 router.get('/api/detail', services.detail)
 // 获取部门数据

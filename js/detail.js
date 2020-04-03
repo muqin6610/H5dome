@@ -6,6 +6,12 @@ $(document).ready(function () {
     $.init();
 });
 
+/**下拉刷新 */
+/**添加'refresh'监听器,初始化下拉刷新 */
+$(document).on('refresh', '.pull-to-refresh-content',function(e) {
+    getData();
+});
+
 /**获取url参数的方法*/
 function getUrlVars() {
     let vars = [], hash
@@ -132,6 +138,7 @@ function getData() {
     url: BASE_URL + "api/detail",
     success: function(data){
       $.hidePreloader();
+      $.pullToRefreshDone('.pull-to-refresh-content');
       let { uid, peopelData } = data
       if(uid !== '3') {
         $('.index2').hide()
@@ -144,7 +151,9 @@ function getData() {
     },
     error: function(){
       console.log("发送失败");
+      $.toast("加载失败,请返回重试!");
       $.hidePreloader();
+      $.pullToRefreshDone('.pull-to-refresh-content');
     }
   })
 };

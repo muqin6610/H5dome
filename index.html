@@ -18,10 +18,12 @@
        <div class="title">师生健康报表</div>
      </header>
   </div>
-  <div class="content index-director">
+  <div class="content index-director  pull-to-refresh-content" data-ptr-distance="55">
+    <div class="placeholder-container">
+    </div>
     <div class="buttons-tab">
-      <a href="#tab1" class="tab-link active button">学生健康统计</a>
-      <a href="#tab2" class="tab-link button">老师健康统计</a>
+      <a href="#tab1" class="tab-link active button" onclick="clickTab1()">学生健康统计</a>
+      <a href="#tab2" class="tab-link button" onclick="clickTab2()">老师健康统计</a>
     </div>
     <div class="content-block">
       <div class="tabs">
@@ -194,7 +196,9 @@
     </div>
     
     <div class="content-block index-teacher">
-      <div class="content">
+      <div class="content pull-to-refresh-content" data-ptr-distance="55">
+        <div class="placeholder-container">
+        </div>
         <div class='statistics'>
           <div id='charts-box'>
             <div class='charts-title-box'>
@@ -262,7 +266,7 @@
       </div>
     </div>
 
-    <div class="content index-Parent">
+    <!-- <div class="content index-Parent">
       <div class="content-block">
         <div class='picker-date-box'>
           <div class="date-box">
@@ -280,20 +284,21 @@
       <div id='card-box'>
 
       </div>
-    </div>
+    </div> -->
     <div class="content index-default"></div>
   </div>
 </body>
 <script>
   /**全局配置 */
   const BASE_URL = "http://localhost:5500/";
+  // const BASE_URL = "http://192.168.1.68:8240/";
   /**初始化 */
   $(document).ready(function () {
       $.init();
   });
   /**默认显示*/
   $('.index-default').show();
-  $('.index-Parent').hide();
+  // $('.index-Parent').hide();
   $('.index-teacher').hide();
   $('.index-director').hide();
 </script>
@@ -301,4 +306,16 @@
 <script src='./js/component.js'></script>
 <script src='./js/echartsInit.js'></script>
 <script src='./js/index.js'></script>
+<script>
+  // 默认第一次获取页面数据
+  getData();
+  // 默认获取教育局和校长的部门数据
+  getDepartData();
+  // 默认获取教师的部门数据
+  getDepartDataTeacher();
+  // 点击tab1页面
+  function clickTab1() { getData(); };
+  // 点击tab2页面
+  function clickTab2() { getDataTab2(); };
+</script>
 </html>
