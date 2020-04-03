@@ -122,3 +122,5 @@ function getData() {
     }
   })
 };
+// 获取页面数据
+getData();

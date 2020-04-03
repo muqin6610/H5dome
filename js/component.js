@@ -26,7 +26,6 @@ $("#input-directorTab").calendar({ // 初始化日历组件
     },
 });
 
-// $("#picker-director")[0].value = '上午'; // 默认选择上午
 $("#picker-director").picker({ // 初始化选择组件
     toolbarTemplate: '<header class="bar bar-nav">\
     <button class="button button-link pull-right close-picker" style="color: #FFF;margin-top: .4rem;">确定</button>\
@@ -45,12 +44,11 @@ $("#picker-director").picker({ // 初始化选择组件
     },
     onClose: function (picker, values, displayValues) {// picker 关闭时的触发动作
         //这里获取关闭时选择的值
-        console.log(picker.value[0])
-        console.log(picker.displayValue[0])
+        console.log(picker.value[0]);
+        console.log(picker.displayValue[0]);
     },
 });
 
-// $("#picker-directorTab")[0].value = '上午'; // 默认选择上午
 $("#picker-directorTab").picker({ // 初始化选择组件
     toolbarTemplate: '<header class="bar bar-nav">\
     <button class="button button-link pull-right close-picker" style="color: #FFF;margin-top: .4rem;">确定</button>\
@@ -69,58 +67,83 @@ $("#picker-directorTab").picker({ // 初始化选择组件
     },
     onClose: function (picker, values, displayValues) {// picker 关闭时的触发动作
         //这里获取关闭时选择的值
-        console.log(picker.value[0])
-        console.log(picker.displayValue[0])
+        console.log(picker.value[0]);
+        console.log(picker.displayValue[0]);
     },
 });
 
-// $("#select-director")[0].value = "全部"; // 默认选择全部
-$("#select-director").picker({ // 初始化选择组件
-    toolbarTemplate: '<header class="bar bar-nav">\
-    <button class="button button-link pull-right close-picker" style="color: #FFF;margin-top: .4rem;">确定</button>\
-    <h1 class="title" style="color: #FFF">请选择部门</h1>\
-    </header>',
-    cols: [
-      {
-          textAlign: 'center',
-          value:["1"],
-          values: ["1", "2"],//隐藏值
-          displayValues: ["全部", "一年级",]//显示值
+// 获取部门数据
+function getDepartData() {
+  $.showPreloader();
+  $.ajax({
+    type: 'get',
+    url: BASE_URL + "api/depart",
+    success: function(data){
+      console.log(data,'111111')
+      let arrName = ['全部'], arrId = ['0']
+      for(let i = 0;i < data.length;i++) {
+        if(arrName.indexOf(data[i].departName) === -1) {
+          arrName.push(data[i].departName)
+        }
+        if(arrId.indexOf(data[i].id) === -1) {
+          arrId.push(data[i].id)
+        }
       }
-    ],
-    formatValue: function (p, values, displayValues) {//自定义方法，用来控制如何显示picker的选中值
-        return displayValues[0];
-    },
-    onClose: function (picker, values, displayValues) {//picker 关闭时的触发动作
-        //这里获取关闭时选择的值
-        console.log(picker.value[0])
-        console.log(picker.displayValue[0])
-    },
-});
 
-// $("#select-directorTab")[0].value = "全部"; // 默认选择全部
-$("#select-directorTab").picker({ // 初始化选择组件
-    toolbarTemplate: '<header class="bar bar-nav">\
-    <button class="button button-link pull-right close-picker" style="color: #FFF;margin-top: .4rem;">确定</button>\
-    <h1 class="title" style="color: #FFF">请选择部门</h1>\
-    </header>',
-    cols: [
-      {
-          textAlign: 'center',
-          value:["1"],
-          values: ["1", "2"],//隐藏值
-          displayValues: ["全部", "一年级",]//显示值
-      }
-    ],
-    formatValue: function (p, values, displayValues) {//自定义方法，用来控制如何显示picker的选中值
-        return displayValues[0];
+      $("#select-director").picker({ // 初始化选择组件
+          toolbarTemplate: '<header class="bar bar-nav">\
+          <button class="button button-link pull-right close-picker" style="color: #FFF;margin-top: .4rem;">确定</button>\
+          <h1 class="title" style="color: #FFF">请选择部门</h1>\
+          </header>',
+          cols: [
+            {
+                textAlign: 'center',
+                value:["0"],
+                values: arrId,//隐藏值
+                displayValues: arrName//显示值
+            }
+          ],
+          formatValue: function (p, values, displayValues) {//自定义方法，用来控制如何显示picker的选中值
+              return displayValues[0];
+          },
+          onClose: function (picker, values, displayValues) {//picker 关闭时的触发动作
+              //这里获取关闭时选择的值
+              console.log(picker.value[0])
+              console.log(picker.displayValue[0])
+          },
+      });
+
+      $("#select-directorTab").picker({ // 初始化选择组件
+          toolbarTemplate: '<header class="bar bar-nav">\
+          <button class="button button-link pull-right close-picker" style="color: #FFF;margin-top: .4rem;">确定</button>\
+          <h1 class="title" style="color: #FFF">请选择部门</h1>\
+          </header>',
+          cols: [
+            {
+                textAlign: 'center',
+                value:["0"],
+                values: arrId,//隐藏值
+                displayValues: arrName//显示值
+            }
+          ],
+          formatValue: function (p, values, displayValues) {//自定义方法，用来控制如何显示picker的选中值
+              return displayValues[0];
+          },
+          onClose: function (picker, values, displayValues) {//picker 关闭时的触发动作
+              //这里获取关闭时选择的值
+              console.log(picker.value[0])
+              console.log(picker.displayValue[0])
+          },
+      });
     },
-    onClose: function (picker, values, displayValues) {//picker 关闭时的触发动作
-        //这里获取关闭时选择的值
-        console.log(picker.value[0])
-        console.log(picker.displayValue[0])
-    },
-});
+    error: function(){
+      console.log("发送失败");
+      $.hidePreloader();
+    }
+  })
+}
+// 获取部门数据
+getDepartData()
 
 function clickPickerDirector() { // 点击图标
   $("#picker-director").click()
@@ -145,7 +168,6 @@ $("#input-parent").calendar({ // 初始化日历组件
     },
 });
 
-// $("#picker-parent")[0].value = '上午'; // 默认选择上午
 $("#picker-parent").picker({ // 初始化选择组件
     toolbarTemplate: '<header class="bar bar-nav">\
     <button class="button button-link pull-right close-picker" style="color: #FFF;margin-top: .4rem;">确定</button>\
@@ -174,29 +196,55 @@ function clickPickerParent() { // 点击图标
 };
 
 /**教师相关组件 */
-// $("#select-teacher")[0].value = "全部"; // 默认选择全部
-$("#select-teacher").picker({ // 初始化选择组件
-    toolbarTemplate: '<header class="bar bar-nav">\
-    <button class="button button-link pull-right close-picker" style="color: #FFF;margin-top: .4rem;">确定</button>\
-    <h1 class="title" style="color: #FFF">请选择部门</h1>\
-    </header>',
-    cols: [
-      {
-          textAlign: 'center',
-          value:["1"],
-          values: ["1", "2"],//隐藏值
-          displayValues: ["全部", "一年级",]//显示值
+// 获取部门数据
+function getDepartData1() {
+  $.showPreloader();
+  $.ajax({
+    type: 'get',
+    url: BASE_URL + "api/depart",
+    success: function(data){
+      // console.log(data)
+      let arrName = ['全部'], arrId = ['0']
+      for(let i = 0;i < data.length;i++) {
+        if(arrName.indexOf(data[i].departName) === -1) {
+          arrName.push(data[i].departName)
+        }
+        if(arrId.indexOf(data[i].id) === -1) {
+          arrId.push(data[i].id)
+        }
       }
-    ],
-    formatValue: function (p, values, displayValues) {//自定义方法，用来控制如何显示picker的选中值
-        return displayValues[0];
+      // $("#select-teacher")[0].value = "全部"; // 默认选择全部
+      $("#select-teacher").picker({ // 初始化选择组件
+          toolbarTemplate: '<header class="bar bar-nav">\
+          <button class="button button-link pull-right close-picker" style="color: #FFF;margin-top: .4rem;">确定</button>\
+          <h1 class="title" style="color: #FFF">请选择部门</h1>\
+          </header>',
+          cols: [
+            {
+                textAlign: 'center',
+                value:["0"],
+                values: arrId,//隐藏值
+                displayValues: arrName//显示值
+            }
+          ],
+          formatValue: function (p, values, displayValues) {//自定义方法，用来控制如何显示picker的选中值
+              return displayValues[0];
+          },
+          onClose: function (picker, values, displayValues) {//picker 关闭时的触发动作
+              //这里获取关闭时选择的值
+              console.log(picker.value[0])
+              console.log(picker.displayValue[0])
+          },
+      });
     },
-    onClose: function (picker, values, displayValues) {//picker 关闭时的触发动作
-        //这里获取关闭时选择的值
-        console.log(picker.value[0])
-        console.log(picker.displayValue[0])
-    },
-});
+    error: function(){
+      console.log("发送失败");
+      $.hidePreloader();
+    }
+  })
+}
+// 获取部门数据
+getDepartData()
 
 function clickSelectTeacher() { // 点击图标
   $("#select-teacher").click()

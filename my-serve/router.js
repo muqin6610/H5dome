@@ -10,5 +10,7 @@ router.post('/api/register', services.register)
 router.get('/api/index', services.index)
 // 获取detail数据
 router.get('/api/detail', services.detail)
+// 获取部门数据
+router.get('/api/depart', services.depart)
 
 module.exports = router

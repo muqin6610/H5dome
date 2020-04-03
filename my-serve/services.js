@@ -306,3 +306,31 @@ exports.detail = (req, res)=>{
         }, 500);
     }
 }
+exports.depart = (req, res) => {
+    res.send([
+        {
+            departName: '南山中学',
+            id: '1',
+        },
+        {
+            departName: '宝安中学',
+            id: '2',
+        },
+        {
+            departName: '龙华中学',
+            id: '3',
+        },
+        {
+            departName: '公明中学',
+            id: '4',
+        },
+        {
+            departName: '大鹏中学',
+            id: '5',
+        },
+        {
+            departName: '爱华中学',
+            id: '6',
+        },
+    ])
+}
