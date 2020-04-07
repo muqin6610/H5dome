@@ -327,52 +327,74 @@ let myChart6 = echarts.init(document.getElementById('chartDirectorTab2'), null, 
     myChart6.resize();
 };
 
-// 获取图表数据
-$.ajax({
-  type: 'post',
-  url: BASE_URL + "api/index",
-  data: {
-    directorDate: directorDate,
-    directorPeriod: directorPeriod,
-    directorDepart: directorDepart,
-  },
-  success: (data) => {
-    let { uid, charts1, charts2 } = data;
-    if(uid !== '3') {
-      option1.series[0].data = charts1;
-      option2.series[0].data = charts2;
-      option3.series[0].data = charts1;
-      option4.series[0].data = charts2;
+function getEchart(s1, s2, s3) { // 获取学生图表数据
+  $.ajax({
+    type: 'post',
+    url: BASE_URL + "/v2/h5PageController/temperatureStatic",
+    data: {
+      date: s1,
+      timeQuantum: s2,
+      orgCode: s3,
+      type: '1',
+    },
+    success: (data) => {
+      let { untemperatureCount, temperatureCount, normalCount, excetionCount } = data.result;
+      option1.series[0].data = [
+        {value: temperatureCount, name: '已测温'},
+        {value: untemperatureCount, name: '未测温'},
+      ];
+      option2.series[0].data = [
+        {value: normalCount, name: '正常'},
+        {value: excetionCount, name: '异常'},
+      ];
+      option3.series[0].data = [
+        {value: temperatureCount, name: '已测温'},
+        {value: untemperatureCount, name: '未测温'},
+      ];
+      option4.series[0].data = [
+        {value: normalCount, name: '正常'},
+        {value: excetionCount, name: '异常'},
+      ];
       // 使用刚指定的配置项和数据显示图表。
       myChart1.setOption(option1);
       myChart2.setOption(option2);
       myChart3.setOption(option3);
       myChart4.setOption(option4);
+    },
+    error: function(){
+      console.log("发送失败");
     }
-  },
-  error: function(){
-    console.log("发送失败");
-  }
-})
-$.ajax({
-  type: 'post',
-  url: BASE_URL + "api/index",
-  data: {
-    directorTabDate: directorTabDate,
-    directorTabPeriod: directorTabPeriod,
-    directorTabDepart: directorTabDepart,
-  },
-  success: (data) => {
-    let { uid, charts3, charts4} = data;
-    if(uid !== '3') {
-      option5.series[0].data = charts3;
-      option6.series[0].data = charts4;
+  })
+}
+
+function getEchartTab(s1, s2, s3) { // 获取老师图表数据
+// console.log(s1, s2, s3)
+  $.ajax({
+    type: 'post',
+    url: BASE_URL + "/v2/h5PageController/temperatureStatic",
+    data: {
+      date: s1,
+      timeQuantum: s2,
+      orgCode: s3,
+      type: '2',
+    },
+    success: (data) => {
+      console.log(data)
+      let { untemperatureCount, temperatureCount, normalCount, excetionCount } = data.result;
+      option5.series[0].data = [
+        {value: temperatureCount, name: '已测温'},
+        {value: untemperatureCount, name: '未测温'},
+      ];
+      option6.series[0].data = [
+        {value: normalCount, name: '正常'},
+        {value: excetionCount, name: '异常'},
+      ];
       // 使用刚指定的配置项和数据显示图表。
       myChart5.setOption(option5);
       myChart6.setOption(option6);
+    },
+    error: function(){
+      console.log("发送失败");
     }
-  },
-  error: function(){
-    console.log("发送失败");
-  }
-})
+  })
+}

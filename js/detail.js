@@ -1,5 +1,5 @@
 /**全局配置 */
-const BASE_URL = "http://localhost:5500/";
+const BASE_URL = "http://192.168.1.68:8240/school";
 
 /**初始化 */
 $(document).ready(function () {
@@ -26,44 +26,35 @@ function getUrlVars() {
 
 // 获取url的参数
 let params = getUrlVars()
-let uid = decodeURI(params.uid)
 let status = decodeURI(params.status)
-let itemStatus = decodeURI(params.itemStatus)
+let title = decodeURI(params.title)
+let date = decodeURI(params.date)
+let timeQuantum = decodeURI(params.timeQuantum)
+let departId = decodeURI(params.departId)
+let itemTitle = decodeURI(params.itemTitle)
 let classStatus = decodeURI(params.classStatus)
-// console.log(params)
-// console.log(status)
-// console.log(itemStatus)
-
+let orgCode = decodeURI(params.orgCode)
+let departName = decodeURI(params.departName)
+let classTitle = decodeURI(params.classTitle)
+let type = decodeURI(params.type)
+let role = decodeURI(params.role)
+let schoolNameStr = decodeURI(params.schoolNameStr)
+let titleTwo = decodeURI(params.titleTwo)
+let peronId = decodeURI(params.peronId)
+// console.log(peronId,'peronId')
+// console.log(date,'date')
+// console.log(timeQuantum,'timeQuantum')
+// console.log(departId,'departId')
+// console.log(departName,'departName')
+// console.log(classTitle,'classTitle')
+// console.log(role,'role')
+// console.log(type,'type')
 /**返回上一页 */
 $('#backIndex').click(function(){
     window.history.go(-1)
 })
 
 /**业务逻辑代码 */
-// 跳转到班级详情
-function classDetail(val) {
-  if(val === '0') {
-    window.location.href=`./classDetail.html?uid=0&status=爱华学校${status}&itemStatus=${status}`
-  }else if(val === '1') {
-    window.location.href=`./classDetail.html?uid=1&status=爱华学校${status}&itemStatus=${status}`
-  }else if(val === '2'){
-    window.location.href=`./classDetail.html?uid=2&status=爱华学校${status}&itemStatus=${status}`
-  }else {
-      window.location.href=`./classDetail.html?uid=3&status=爱华学校${status}&itemStatus=${status}`
-  }
-}
-// 跳转到人员详情
-function peopelDetail(val) {
-  if(val === '0') {
-    window.location.href=`./peopelDetail.html?uid=0&classStatus=爱华实验学校一年级一班${itemStatus}`
-  }else if(val === '1') {
-    window.location.href=`./peopelDetail.html?uid=1&classStatus=爱华学校二年级一班${itemStatus}`
-  }else if(val === '2'){
-    window.location.href=`./peopelDetail.html?uid=2&classStatus=爱华学校二年级二班${itemStatus}`
-  }else {
-      window.location.href=`./peopelDetail.html?uid=3&classStatus=爱华学校三年级三班${itemStatus}`
-  }
-}
 
 /**无限滚动 */
 // 加载flag
@@ -122,32 +113,91 @@ $(document).on('infinite', '.infinite-scroll-bottom',function() {
     }, 1000);
 });
 
+
+// 循环出学校数据
+function forSchoolData(arr) {
+  // console.log(arr,'arr')
+  // 生成新条目的HTML
+  let html = '';
+  for (let i = 0; i < arr.length; i++) {
+      html += '<li class="item-content">'
+      html +=   '<div class="item-media"><i class="icon icon-f7"></i></div>'
+      html +=   '<div class="item-inner" onclick=classDetail(' + JSON.stringify(arr[i])+')>'
+      html +=     '<div class="item-title">' + arr[i].departName + '</div>'
+      html +=     '<div class="item-after">' + arr[i].count + '<span class="icon icon-right icon-margin"></span></div>'
+      html +=   '</div>'
+      html += '</li>'
+  }
+  // 添加新条目
+  $('.ui-content').append(html);
+}
+
+// 循环出班级数据
+function forClassData(arr) {
+  // console.log(arr,'arr')
+  // 生成新条目的HTML
+  let html = '';
+  for (let i = 0; i < arr.length; i++) {
+      html += '<li class="item-content">'
+      html +=   '<div class="item-media"><i class="icon icon-f7"></i></div>'
+      html +=   '<div class="item-inner" onclick=peopelDetail(' + JSON.stringify(arr[i])+')>'
+      html +=     '<div class="item-title">' + arr[i].gradeName + '</div>'
+      html +=     '<div class="item-title">' + arr[i].departName + '</div>'
+      html +=     '<div class="item-after">' + arr[i].total + '<span class="icon icon-right icon-margin"></span></div>'
+      html +=   '</div>'
+      html += '</li>'
+  }
+  // 添加新条目
+  $('.ui-content').append(html);
+}
+
+// 循环出人员数据
+function forPeopelData(arr) {
+  // console.log(arr,'arr')
+  if(arr === null) {
+    arr = []
+  }
+  // 生成新条目的HTML
+  let html = '';
+  for (let i = 0; i < arr.length; i++) {
+      html += '<li class="item-content">'
+      html +=   '<div class="item-media"><i class="icon icon-f7"></i></div>'
+      html +=   '<div class="item-inner">'
+      html +=     '<div class="item-title">' + arr[i].realName + '</div>'
+      if(arr[i].passTime) {
+        html +=     '<div class="item-title">' + arr[i].passTime + '</div>'
+      }
+      if(arr[i].mappingTemp) {
+        if(arr[i].status == '0') {
+          html +=     '<div class="item-after blackColor">' + arr[i].mappingTemp + '</div>'
+        }else {
+          html +=     '<div class="item-after redColor">' + arr[i].mappingTemp + '</div>'
+        }
+      }
+      html +=   '</div>'
+      html += '</li>'
+  }
+  // 添加新条目
+  $('.ui-content').append(html);
+}
+
 /**-------------------------------------------------------------------------------------------------- */
 
 
 /**ajax请求代码 */
-function getData() {
+function getData() { // 获得学校未测温、已测温、体温异常报列表
   $.showPreloader();
   //发送异步请求
   $.ajax({
     type: 'get',
-    data: {
-      uid: '3',
-      status: '3',
-    },
-    url: BASE_URL + "api/detail",
+    url: BASE_URL + `/v2/h5PageController/getSchoolUnTemperature?status=${status}&date=${date}&timeQuantum=${timeQuantum}&departId=${departId}&type=${type}`,
     success: function(data){
+      let schoolArr = data.result
       $.hidePreloader();
       $.pullToRefreshDone('.pull-to-refresh-content');
-      let { uid, peopelData } = data
-      if(uid !== '3') {
-        $('.index2').hide()
-        $('.index1').show()
-      }else {
-        $('.index1').hide()
-        $('.index2').show()
-        addItems(peopelData)
-      }
+      $('.index2').hide()
+      $('.index1').show()
+      forSchoolData(schoolArr)
     },
     error: function(){
       console.log("发送失败");
@@ -157,4 +207,76 @@ function getData() {
     }
   })
 };
-getData();
+
+function getGradeUnTemperature() { // 获得学校班级未测温、已测温、体温异常数据统计列表
+  $.showPreloader();
+  //发送异步请求
+  $.ajax({
+    type: 'get',
+    url: BASE_URL + `/v2/h5PageController/getGradeUnTemperature?status=${status}&date=${date}&timeQuantum=${timeQuantum}&orgCode=${orgCode}&type=${type}`,
+    success: function(data){
+      console.log(data)
+      let classArr = data.result
+      $.hidePreloader();
+      $.pullToRefreshDone('.pull-to-refresh-content');
+      forClassData(classArr)
+    },
+    error: function(){
+      console.log("发送失败");
+      $.toast("加载失败,请返回重试!");
+      $.hidePreloader();
+      $.pullToRefreshDone('.pull-to-refresh-content');
+    }
+  })
+}
+
+function getSchoolClassUnTemperature() { // 获得班级未测温、已测温、体温异常人员列表列表
+  $.showPreloader();
+  //发送异步请求
+  $.ajax({
+    type: 'get',
+    url: BASE_URL + `/v2/h5PageController/getSchoolClassUnTemperature?status=${status}&date=${date}&timeQuantum=${timeQuantum}&orgCode=${orgCode}&type=${type}`,
+    success: function(data){
+      console.log(data)
+      let peopelArr = data.result
+      $.hidePreloader();
+      $.pullToRefreshDone('.pull-to-refresh-content');
+      forPeopelData(peopelArr)
+    },
+    error: function(){
+      console.log("发送失败");
+      $.toast("加载失败,请返回重试!");
+      $.hidePreloader();
+      $.pullToRefreshDone('.pull-to-refresh-content');
+    }
+  })
+}
+function getClassUnTemperatureByTeacher() { // 教师获得班级未测温、已测温、体温异常人员列表报列表
+  $.showPreloader();
+  //发送异步请求
+  $.ajax({
+    type: 'get',
+    url: BASE_URL + `/v2/h5PageController/getClassUnTemperatureByTeacher?status=${status}&date=${date}&peronId=${peronId}&timeQuantum=${timeQuantum}&type=${type}`,
+    success: function(data){
+      let peopelArr = data.result
+      $.hidePreloader();
+      $.pullToRefreshDone('.pull-to-refresh-content');
+      forPeopelData(peopelArr)
+    },
+    error: function(){
+      console.log("发送失败");
+      $.toast("加载失败,请返回重试!");
+      $.hidePreloader();
+      $.pullToRefreshDone('.pull-to-refresh-content');
+    }
+  })
+}
+
+// 跳转到班级详情
+function classDetail(data) {
+  window.location.href=`./classDetail.html?status=${status}&departName=${data.departName}&title=${data.departName}${title}&itemTitle=${title}&date=${date}&orgCode=${data.orgCode}&timeQuantum=${timeQuantum}&type=${type}`
+}
+// 跳转到人员详情
+function peopelDetail(data) {
+  window.location.href=`./peopelDetail.html?status=${status}&role=${role}&peronId=${peronId}&classTitle=${departName}${data.gradeName}${data.departName}${itemTitle}&date=${date}&timeQuantum=${timeQuantum}&orgCode=${data.orgCode}&type=${type}`
+}

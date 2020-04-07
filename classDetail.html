@@ -35,87 +35,8 @@
           </ul>
         </div>
         <div class="list-block">
-          <ul>
-            <li class="item-content">
-              <div class="item-media"><i class="icon icon-f7"></i></div>
-              <div class="item-inner" onclick="peopelDetail('0')">
-                <div class="item-title">一年级</div>
-                <div class="item-title">一班</div>
-                <div class="item-after">0<span class="icon icon-right icon-margin"></span></div>
-              </div>
-            </li>
-            <li class="item-content">
-              <div class="item-media"><i class="icon icon-f7"></i></div>
-              <div class="item-inner" onclick="peopelDetail('1')">
-                <div class="item-title">一年级</div>
-                <div class="item-title">二班</div>
-                <div class="item-after">0<span class="icon icon-right icon-margin"></span></div>
-              </div>
-            </li>
-            <li class="item-content">
-              <div class="item-media"><i class="icon icon-f7"></i></div>
-              <div class="item-inner" onclick="peopelDetail('2')">
-                <div class="item-title">一年级</div>
-                <div class="item-title">三班</div>
-                <div class="item-after">0<span class="icon icon-right icon-margin"></span></div>
-              </div>
-            </li>
-            <li class="item-content">
-              <div class="item-media"><i class="icon icon-f7"></i></div>
-              <div class="item-inner" onclick="peopelDetail('3')">
-                <div class="item-title">二年级</div>
-                <div class="item-title">一班</div>
-                <div class="item-after">0<span class="icon icon-right icon-margin"></span></div>
-              </div>
-            </li>
-            <li class="item-content">
-              <div class="item-media"><i class="icon icon-f7"></i></div>
-              <div class="item-inner" onclick="peopelDetail('3')">
-                <div class="item-title">二年级</div>
-                <div class="item-title">一班</div>
-                <div class="item-after">0<span class="icon icon-right icon-margin"></span></div>
-              </div>
-            </li>
-            <li class="item-content">
-              <div class="item-media"><i class="icon icon-f7"></i></div>
-              <div class="item-inner" onclick="peopelDetail('3')">
-                <div class="item-title">二年级</div>
-                <div class="item-title">一班</div>
-                <div class="item-after">0<span class="icon icon-right icon-margin"></span></div>
-              </div>
-            </li>
-            <li class="item-content">
-              <div class="item-media"><i class="icon icon-f7"></i></div>
-              <div class="item-inner" onclick="peopelDetail('3')">
-                <div class="item-title">二年级</div>
-                <div class="item-title">一班</div>
-                <div class="item-after">0<span class="icon icon-right icon-margin"></span></div>
-              </div>
-            </li>
-            <li class="item-content">
-              <div class="item-media"><i class="icon icon-f7"></i></div>
-              <div class="item-inner" onclick="peopelDetail('3')">
-                <div class="item-title">二年级</div>
-                <div class="item-title">一班</div>
-                <div class="item-after">0<span class="icon icon-right icon-margin"></span></div>
-              </div>
-            </li>
-            <li class="item-content">
-              <div class="item-media"><i class="icon icon-f7"></i></div>
-              <div class="item-inner" onclick="peopelDetail('3')">
-                <div class="item-title">二年级</div>
-                <div class="item-title">一班</div>
-                <div class="item-after">0<span class="icon icon-right icon-margin"></span></div>
-              </div>
-            </li>
-            <li class="item-content">
-              <div class="item-media"><i class="icon icon-f7"></i></div>
-              <div class="item-inner" onclick="peopelDetail('3')">
-                <div class="item-title">二年级</div>
-                <div class="item-title">一班</div>
-                <div class="item-after">0<span class="icon icon-right icon-margin"></span></div>
-              </div>
-            </li>
+          <ul class='ui-content'>
+
           </ul>
         </div>
     </div>
@@ -124,8 +45,23 @@
 <script src="./js/sm.js"></script>
 <script src='./js/detail.js'></script>
 <script>
+// 获得学校班级未测温、已测温、体温异常数据统计列表
+getGradeUnTemperature()
 // 设置顶部状态标题
-$('.class-title').text(status + '详情')
-$('.class-item-title').text(itemStatus + '人数')
+if(schoolNameStr && schoolNameStr != 'undefined') {
+  $('.class-title').text(schoolNameStr + '详情')
+  if(titleTwo && titleTwo != 'undefined') {
+    $('.class-item-title').text(titleTwo + '人数')
+  }else {
+    $('.class-item-title').text(itemTitle + '人数')
+  }
+}else {
+  $('.class-title').text(title + '详情')
+  if(titleTwo && titleTwo != 'undefined') {
+    $('.class-item-title').text(titleTwo + '人数')
+  }else {
+    $('.class-item-title').text(itemTitle + '人数')
+  }
+}
 </script>
 </html>

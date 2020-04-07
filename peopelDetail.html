@@ -19,30 +19,29 @@
        </header>
     </div>
 
-    <div class='content infinite-scroll infinite-scroll-bottom pull-to-refresh-content' data-distance="100" data-ptr-distance="55">
+    <div class='content pull-to-refresh-content' data-distance="100" data-ptr-distance="55">
       <div class="placeholder-container">
       </div>
       <div class="list-block">
         <ul class='ui-content'>
-          <!-- <li class="item-content">
-            <div class="item-media"><i class="icon icon-f7"></i></div>
-            <div class="item-inner">
-              <div class="item-title">阿伟</div>
-              <div class="item-title">2020-03-25 08:26:55</div>
-              <div class="item-after blackColor">37.8℃</div>
-            </div>
-          </li> -->
+          
         </ul>
       </div>
-      <div class="infinite-scroll-preloader">
+      <!-- <div class="infinite-scroll-preloader">
           <div class="preloader"></div>
-      </div>
+      </div> -->
     </div>
  </div>
 </body>
 <script src="./js/sm.js"></script>
 <script src='./js/detail.js'></script>
 <script>
-$('.peopel-title').text(classStatus + '详情')
+// 获得班级未测温、已测温、体温异常人员列表列表
+if(role !== '老师') {
+  getSchoolClassUnTemperature()
+}else {
+  getClassUnTemperatureByTeacher()
+}
+$('.peopel-title').text(classTitle + '详情')
 </script>
 </html>

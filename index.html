@@ -87,14 +87,14 @@
               <ul>
                 <li class="item-content">
                   <div class="item-media"><i class="icon icon-f7"></i></div>
-                  <div class="item-inner" onclick="schoolDetail('0')">
+                  <div class="item-inner" onclick="schoolDetail('1')">
                     <div class="item-title">未测温人数</div>
                     <div class="item-after"><span id='notReportedDirector'>0</span><span class="icon icon-right icon-margin"></span></div>
                   </div>
                 </li>
                 <li class="item-content">
                   <div class="item-media"><i class="icon icon-f7"></i></div>
-                  <div class="item-inner" onclick="schoolDetail('1')">
+                  <div class="item-inner" onclick="schoolDetail('2')">
                     <div class="item-title">已测温人数</div>
                     <div class="item-after"><span id='reportedDirector'>0</span><span class="icon icon-right icon-margin"></span></div>
                   </div>
@@ -168,21 +168,21 @@
               <ul>
                 <li class="item-content">
                   <div class="item-media"><i class="icon icon-f7"></i></div>
-                  <div class="item-inner" onclick="schoolDetail('0')">
+                  <div class="item-inner" onclick="schoolDetailTab('1')">
                     <div class="item-title">未测温人数</div>
                     <div class="item-after"><span id='notReportedDirectorTab'>0</span><span class="icon icon-right icon-margin"></span></div>
                   </div>
                 </li>
                 <li class="item-content">
                   <div class="item-media"><i class="icon icon-f7"></i></div>
-                  <div class="item-inner" onclick="schoolDetail('1')">
+                  <div class="item-inner" onclick="schoolDetailTab('2')">
                     <div class="item-title">已测温人数</div>
                     <div class="item-after"><span id='reportedDirectorTab'>0</span><span class="icon icon-right icon-margin"></span></div>
                   </div>
                 </li>
                 <li class="item-content">
                   <div class="item-media"><i class="icon icon-f7"></i></div>
-                  <div class="item-inner" onclick="schoolDetail('3')">
+                  <div class="item-inner" onclick="schoolDetailTab('3')">
                     <div class="item-title">体温异常人数</div>
                     <div class="item-after"><span id='abnormalDirectorTab'>0</span><span class="icon icon-right icon-margin"></span></div>
                   </div>
@@ -199,6 +199,20 @@
       <div class="content pull-to-refresh-content" data-ptr-distance="55">
         <div class="placeholder-container">
         </div>
+
+        <div class='picker-date-box'>
+          <div class="date-box">
+            <span style="font-size: 0.75rem;">时间</span>
+            <span class="icon icon-left"></span>
+            <input class="date-input" type="text" id="input-teacher"/>
+            <span class="icon icon-right"></span>
+          </div>
+          <div class='picker-box'>
+            <input class='picker-input' type="text" id='picker-teacher' placeholder="上午"/>
+            <span class="icon icon-down" onclick="clickPickerTeacher()"></span>
+          </div>
+        </div>
+
         <div class='statistics'>
           <div id='charts-box'>
             <div class='charts-title-box'>
@@ -242,14 +256,14 @@
           <ul>
             <li class="item-content">
               <div class="item-media"><i class="icon icon-f7"></i></div>
-              <div class="item-inner" onclick="schoolDetail('0')">
+              <div class="item-inner" onclick="schoolDetail('1')">
                 <div class="item-title">未测温人数</div>
                 <div class="item-after"><span id='notReportedTeacher'>0</span><span class="icon icon-right icon-margin"></span></div>
               </div>
             </li>
             <li class="item-content">
               <div class="item-media"><i class="icon icon-f7"></i></div>
-              <div class="item-inner" onclick="schoolDetail('1')">
+              <div class="item-inner" onclick="schoolDetail('2')">
                 <div class="item-title">已测温人数</div>
                 <div class="item-after"><span id='reportedTeacher'>0</span><span class="icon icon-right icon-margin"></span></div>
               </div>
@@ -266,7 +280,7 @@
       </div>
     </div>
 
-    <!-- <div class="content index-Parent">
+    <div class="content index-Parent">
       <div class="content-block">
         <div class='picker-date-box'>
           <div class="date-box">
@@ -284,21 +298,25 @@
       <div id='card-box'>
 
       </div>
-    </div> -->
+    </div>
     <div class="content index-default"></div>
   </div>
 </body>
 <script>
   /**全局配置 */
-  const BASE_URL = "http://localhost:5500/";
-  // const BASE_URL = "http://192.168.1.68:8240/";
+  const BASE_URL = "http://192.168.1.68:8240/school";
+  let departIdStr
+  let userRole
+  let orgCodeStr
+  let schoolNameStr
+  let personIdStr
   /**初始化 */
   $(document).ready(function () {
       $.init();
   });
   /**默认显示*/
   $('.index-default').show();
-  // $('.index-Parent').hide();
+  $('.index-Parent').hide();
   $('.index-teacher').hide();
   $('.index-director').hide();
 </script>
@@ -307,15 +325,22 @@
 <script src='./js/echartsInit.js'></script>
 <script src='./js/index.js'></script>
 <script>
+  // 测试获取app登录的用户信息
+  getLoginInfo()
   // 默认第一次获取页面数据
-  getData();
-  // 默认获取教育局和校长的部门数据
-  getDepartData();
-  // 默认获取教师的部门数据
-  getDepartDataTeacher();
+  setTimeout(() =>{
+    getData(directorDate, directorPeriod, directorDepart);
+    getEchart(directorDate, directorPeriod, directorDepart)
+    getDepartData()
+  },500)
   // 点击tab1页面
-  function clickTab1() { getData(); };
+  function clickTab1() { 
+    getData(directorDate, directorPeriod, directorDepart); 
+  };
   // 点击tab2页面
-  function clickTab2() { getDataTab2(); };
+  function clickTab2() { 
+    getDataTab2(directorDate, directorPeriod, directorTabDepart); 
+    getEchartTab(directorDate, directorPeriod, directorTabDepart);
+  };
 </script>
 </html>

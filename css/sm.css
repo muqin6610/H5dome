@@ -381,21 +381,33 @@ html {
   }
   #select-director {
     border: 0;
-    width: 3.5rem;
+    width: 5.5rem;
+    padding-right: .4rem;
     background: #ffffff;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    text-align: right;
   }
   .placeholder-container {
     height: 5.3rem;
   }
   #select-directorTab {
     border: 0;
-    width: 3.5rem;
+    width: 4.5rem;
     background: #ffffff;
+    text-align: right;
+    padding-right: .4rem;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
   }
   #select-teacher {
     border: 0;
-    width: 3.5rem;
+    width: 4.5rem;
     background: #ffffff;
+    text-align: right;
+    padding-right: .4rem;
   }
   #select-input2 {
     border: 0;
@@ -461,10 +473,11 @@ html {
     float: right;
   } 
   .content-block .picker-date-box .picker-input {
+    text-align: right;
     width: 4rem;
     border: 0;
     background: #eeeeee;
-    padding-left: .6rem;
+    padding-right: .4rem;
   } 
   .content-block .picker-date-box .date-box .date-input {
     border: 0;

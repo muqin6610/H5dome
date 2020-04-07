@@ -34,14 +34,8 @@
         </ul>
       </div>
       <div class="list-block">
-        <ul>
-          <li class="item-content">
-            <div class="item-media"><i class="icon icon-f7"></i></div>
-            <div class="item-inner" onclick="classDetail('0')">
-              <div class="item-title">爱华学校</div>
-              <div class="item-after">0<span class="icon icon-right icon-margin"></span></div>
-            </div>
-          </li>
+        <ul class='ui-content'>
+          
         </ul>
       </div>
     </div>
@@ -50,8 +44,10 @@
 <script src="./js/sm.js"></script>
 <script src='./js/detail.js'></script>
 <script>
+// 获取学校数据
+getData();
 // 设置顶部状态标题
-$('.school-title').text(status + '人数统计')
-$('.school-item-title').text(status + '人数')
+$('.school-title').text(title + '人数统计');
+$('.school-item-title').text(title + '人数');
 </script>
 </html>
